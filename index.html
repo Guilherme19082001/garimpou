@@ -1,1 +1,875 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garimpou | Tecnologia que vale a pena em Queimadas-BA</title>
+    <meta name="description" content="Loja especializada em iPhones seminovos testados, Smartwatches e Acessórios em Queimadas, Bahia. Garantia, qualidade e atendimento local. Enviamos para todo o Brasil.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
+    <!-- Tailwind Config for Custom Colors and Animations -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#064e3b', 
+                            light: '#10b981', 
+                            dark: '#022c22', 
+                            black: '#050505', 
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'text-shimmer': 'textShimmer 3s ease-in-out infinite alternate',
+                        'sweep': 'sweep 2s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '1', boxShadow: '0 0 15px rgba(16, 185, 129, 0.4)' },
+                            '50%': { opacity: '.8', boxShadow: '0 0 30px rgba(16, 185, 129, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        textShimmer: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '100% 50%' }
+                        },
+                        sweep: {
+                            '0%': { transform: 'translateX(-100%) skewX(-15deg)' },
+                            '50%, 100%': { transform: 'translateX(200%) skewX(-15deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        .page-section.active {
+            display: block;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #064e3b; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981; 
+        }
+
+        /* Efeitos de Aparição no Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Brilho e Efeitos 3D nos cards */
+        .card-hover-effect {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+        }
+        .card-hover-effect:hover {
+            box-shadow: -15px 25px 30px -5px rgba(0, 0, 0, 0.9), 0 0 25px rgba(16, 185, 129, 0.3);
+            border-color: rgba(16, 185, 129, 0.5);
+            transform: perspective(1000px) translateY(-10px) rotateX(4deg) rotateY(-4deg);
+            z-index: 10;
+        }
+        .card-hover-effect img {
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card-hover-effect:hover img {
+            transform: translateZ(40px) scale(1.10);
+        }
+
+        /* Hero 3D Effect */
+        #hero-3d-wrapper {
+            perspective: 1200px;
+        }
+        #hero-3d-inner {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        #hero-3d-inner img {
+            transform: translateZ(80px); /* Faz o relógio "saltar" da tela */
+        }
+        
+        /* Grid de fundo premium */
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Header Wrapper Fixo -->
+    <header class="fixed w-full z-50 flex flex-col">
+        <!-- Top Announcement Bar -->
+        <div class="bg-gradient-to-r from-emerald-600 via-brand-light to-emerald-600 text-black text-[10px] sm:text-xs font-black text-center py-2 uppercase tracking-widest shadow-md">
+            <span class="inline-flex items-center">
+                <i data-lucide="truck" class="w-4 h-4 mr-2"></i>
+                Enviamos para todo o Brasil com segurança e garantia
+            </span>
+        </div>
+
+        <!-- Navbar -->
+        <nav class="w-full bg-black/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center cursor-pointer group" onclick="navigateTo('home')">
+                        <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png" onerror="this.src='https://ui-avatars.com/api/?name=G&background=10b981&color=000'" alt="" class="h-12 w-12 rounded-full mr-3 object-cover shadow-[0_0_15px_rgba(16,185,129,0.4)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] transition duration-300">
+                        <span class="font-black text-3xl tracking-widest text-white uppercase bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:from-brand-light group-hover:to-white transition-all duration-500">Garimpou</span>
+                    </div>
+                    
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-6 items-center">
+                        <a href="#" onclick="navigateTo('home')" class="nav-link text-gray-300 hover:text-brand-light transition px-3 py-2 text-sm font-medium uppercase tracking-wider">Início</a>
+                        <a href="#" onclick="navigateTo('iphones')" class="nav-link text-gray-300 hover:text-brand-light transition px-3 py-2 text-sm font-medium uppercase tracking-wider">iPhones</a>
+                        <a href="#" onclick="navigateTo('smartwatches')" class="nav-link text-gray-300 hover:text-brand-light transition px-3 py-2 text-sm font-medium uppercase tracking-wider">Smartwatches</a>
+                        <a href="#" onclick="navigateTo('produtos')" class="nav-link text-gray-300 hover:text-brand-light transition px-3 py-2 text-sm font-medium uppercase tracking-wider">Acessórios</a>
+                        <a href="#" onclick="navigateTo('sobre')" class="nav-link text-gray-300 hover:text-brand-light transition px-3 py-2 text-sm font-medium uppercase tracking-wider">Sobre Nós</a>
+                        
+                        <button onclick="openWhatsApp('Olá! Vim pelo site e gostaria de tirar uma dúvida.')" class="bg-brand-light hover:bg-emerald-400 text-black font-extrabold py-2 px-6 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.5)] hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] hover:-translate-y-1 flex items-center uppercase tracking-wide text-sm">
+                            <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Contato
+                        </button>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="text-gray-300 hover:text-brand-light focus:outline-none transition">
+                            <i data-lucide="menu" class="h-8 w-8"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black/95 backdrop-blur-xl border-b border-brand-green/30 absolute w-full">
+                <div class="px-4 pt-2 pb-6 space-y-2 sm:px-3 text-center">
+                    <a href="#" onclick="navigateTo('home')" class="block px-3 py-3 rounded-md text-base font-bold text-gray-300 hover:text-white hover:bg-brand-green/50 uppercase tracking-widest transition">Início</a>
+                    <a href="#" onclick="navigateTo('iphones')" class="block px-3 py-3 rounded-md text-base font-bold text-gray-300 hover:text-white hover:bg-brand-green/50 uppercase tracking-widest transition">iPhones</a>
+                    <a href="#" onclick="navigateTo('smartwatches')" class="block px-3 py-3 rounded-md text-base font-bold text-gray-300 hover:text-white hover:bg-brand-green/50 uppercase tracking-widest transition">Smartwatches</a>
+                    <a href="#" onclick="navigateTo('produtos')" class="block px-3 py-3 rounded-md text-base font-bold text-gray-300 hover:text-white hover:bg-brand-green/50 uppercase tracking-widest transition">Acessórios</a>
+                    <a href="#" onclick="navigateTo('sobre')" class="block px-3 py-3 rounded-md text-base font-bold text-gray-300 hover:text-white hover:bg-brand-green/50 uppercase tracking-widest transition">Sobre & Garantia</a>
+                    <button onclick="openWhatsApp('Olá! Vim pelo site e gostaria de tirar uma dúvida.')" class="w-full mt-4 bg-brand-light text-black font-black py-4 px-4 rounded-xl flex justify-center items-center shadow-[0_0_20px_rgba(16,185,129,0.4)] animate-pulse-glow uppercase tracking-wider">
+                        <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i> Falar no WhatsApp
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area (ajustado pt-28 para acomodar a top bar) -->
+    <main class="flex-grow pt-28">
+
+        <!-- ==================== HOME PAGE ==================== -->
+        <section id="home" class="page-section active">
+            <!-- Hero Section Premium 3D -->
+            <div class="relative bg-black overflow-hidden min-h-[100vh] flex items-center pt-20">
+                <!-- Fundo Premium -->
+                <div class="absolute inset-0 bg-grid-pattern z-0"></div>
+                <div class="absolute inset-0 z-0">
+                    <!-- Glow radial elegante -->
+                    <div class="absolute top-1/4 left-1/4 w-[40rem] h-[40rem] bg-brand-light/10 rounded-full mix-blend-screen filter blur-[120px] animate-float opacity-70"></div>
+                    <div class="absolute bottom-1/4 right-1/4 w-[40rem] h-[40rem] bg-emerald-800/20 rounded-full mix-blend-screen filter blur-[120px] animate-float" style="animation-delay: 2s;"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/80 to-black"></div>
+                </div>
+                
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center justify-between w-full">
+                    
+                    <!-- Lado Esquerdo: Texto -->
+                    <div class="lg:w-1/2 text-center lg:text-left reveal flex flex-col justify-center mt-10 lg:mt-0">
+                        <span class="inline-flex items-center mx-auto lg:mx-0 py-1.5 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-gray-300 font-semibold tracking-widest uppercase text-xs mb-8 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                            <span class="w-2 h-2 rounded-full bg-brand-light mr-2 animate-pulse"></span>
+                            Queimadas - Bahia
+                        </span>
+                        
+                        <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight drop-shadow-2xl">
+                            O FUTURO <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-brand-light to-white bg-[length:200%_auto] animate-text-shimmer drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">NO SEU PULSO.</span>
+                        </h1>
+                        
+                        <p class="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-gray-400 font-light leading-relaxed reveal reveal-delay-1">
+                            A <strong class="text-white font-bold">Garimpou</strong> traz para si a mais alta tecnologia em Smartwatches e iPhones premium. Aparelhos testados, garantia absoluta e <strong class="text-brand-light font-bold">envio para todo o Brasil.</strong>
+                        </p>
+                        
+                        <div class="mt-10 flex flex-col sm:flex-row gap-5 w-full sm:w-auto justify-center lg:justify-start reveal reveal-delay-2">
+                            <button onclick="navigateTo('produtos')" class="w-full sm:w-auto flex items-center justify-center px-8 py-4 border border-white/20 text-sm font-bold rounded-full text-white bg-white/5 backdrop-blur-md hover:bg-white hover:text-black transition-all duration-500 uppercase tracking-widest shadow-xl group">
+                                Explorar Catálogo
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                            <button onclick="openWhatsApp('Olá, vim pelo site e quero um atendimento premium!')" class="relative overflow-hidden w-full sm:w-auto flex items-center justify-center px-8 py-4 border border-transparent text-sm font-bold rounded-full text-black bg-brand-light hover:bg-emerald-400 transition-all duration-300 transform shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_40px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse-glow group">
+                                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-sweep pointer-events-none"></span>
+                                <i data-lucide="message-circle" class="w-5 h-5 mr-2 relative z-10"></i> <span class="relative z-10">Atendimento VIP</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Lado Direito: Relógio 3D Interativo -->
+                    <div class="lg:w-1/2 mt-20 lg:mt-0 relative flex justify-center items-center w-full min-h-[400px] lg:min-h-[600px] reveal reveal-delay-3" id="hero-3d-wrapper">
+                        <!-- Fundo do relógio (Glow e base) -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 bg-brand-light/20 rounded-full blur-[80px] animate-pulse pointer-events-none"></div>
+                        
+                        <!-- Elemento que inclina -->
+                        <div id="hero-3d-inner" class="relative z-10 w-64 h-64 md:w-96 md:h-96 xl:w-[500px] xl:h-[500px] cursor-pointer">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.src='pulsefoto1.webp'" alt="" class="w-full h-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)]">
+                            
+                            <!-- Elementos flutuantes para aumentar efeito 3D -->
+                            <div class="absolute -top-10 -right-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl transform translate-z-[100px] hidden md:block" style="transform: translateZ(100px);">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="shield-check" class="text-brand-light w-5 h-5"></i>
+                                    <span class="text-white text-xs font-bold uppercase tracking-wider">Garantia</span>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-10 -left-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl transform translate-z-[120px] hidden md:block" style="transform: translateZ(120px);">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="battery-charging" class="text-brand-light w-5 h-5"></i>
+                                    <span class="text-white text-xs font-bold uppercase tracking-wider">Alta Duração</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Benefícios -->
+            <div class="py-20 bg-gradient-to-b from-black to-[#030303] border-t border-white/5">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="reveal bg-black/60 p-8 rounded-3xl border border-gray-800 backdrop-blur-sm card-hover-effect transition-all duration-500 text-center group">
+                            <div class="w-20 h-20 mx-auto bg-brand-dark rounded-full flex items-center justify-center mb-6 text-brand-light group-hover:scale-110 group-hover:bg-brand-light group-hover:text-black transition-all duration-300 shadow-lg">
+                                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wide">Testados</h3>
+                            <p class="text-gray-400">Todos os nossos aparelhos passam por um rigoroso teste de qualidade antes da venda.</p>
+                        </div>
+                        <div class="reveal reveal-delay-1 bg-black/60 p-8 rounded-3xl border border-gray-800 backdrop-blur-sm card-hover-effect transition-all duration-500 text-center group">
+                            <div class="w-20 h-20 mx-auto bg-brand-dark rounded-full flex items-center justify-center mb-6 text-brand-light group-hover:scale-110 group-hover:bg-brand-light group-hover:text-black transition-all duration-300 shadow-lg">
+                                <i data-lucide="shield-check" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wide">Garantia</h3>
+                            <p class="text-gray-400">Compre com segurança. Oferecemos garantia clara para defeitos de funcionamento.</p>
+                        </div>
+                        <div class="reveal reveal-delay-2 bg-black/60 p-8 rounded-3xl border border-gray-800 backdrop-blur-sm card-hover-effect transition-all duration-500 text-center group">
+                            <div class="w-20 h-20 mx-auto bg-brand-dark rounded-full flex items-center justify-center mb-6 text-brand-light group-hover:scale-110 group-hover:bg-brand-light group-hover:text-black transition-all duration-300 shadow-lg">
+                                <i data-lucide="truck" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wide">Envio Nacional</h3>
+                            <p class="text-gray-400">Sua loja de confiança em Queimadas-BA, agora com envio seguro para todo o Brasil.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ofertas da Semana (Destaques) -->
+            <div class="py-24 bg-black relative">
+                <!-- Efeito Luminoso Fundo -->
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-dark/20 filter blur-[150px] pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center mb-16 reveal">
+                        <h2 class="text-4xl font-black text-white sm:text-5xl uppercase tracking-wider drop-shadow-md">Ofertas da Semana</h2>
+                        <div class="w-24 h-1.5 bg-brand-light mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        
+                        <!-- Product Card 1 -->
+                        <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col h-full">
+                            <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
+                                <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png" onerror="this.src='Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png'" alt="" class="w-full h-full object-contain drop-shadow-2xl">
+                                <span class="absolute top-3 right-3 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">Várias Cores</span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-black text-white mb-2">Linha iPhone 13</h3>
+                                <p class="text-sm text-gray-400 mb-4 flex-grow">Impecável e com garantia de 1 mês.</p>
+                                <div class="flex justify-between items-center mb-6">
+                                    <span class="text-xl font-bold text-brand-light drop-shadow-sm">Consulte valor</span>
+                                </div>
+                                <button onclick="buyProduct('Linha iPhone 13')" class="w-full bg-brand-dark hover:bg-brand-light text-brand-light hover:text-black font-black py-4 px-4 rounded-xl transition-all duration-300 flex justify-center items-center border border-brand-green uppercase tracking-wide">
+                                    <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i> Eu Quero
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="reveal reveal-delay-1 bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col h-full relative">
+                            <div class="absolute -top-3 -right-3 z-30 bg-brand-light text-black font-black px-4 py-1.5 rounded-full text-xs shadow-[0_0_15px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse">Top Venda</div>
+                            <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
+                                <img id="home-s10pro" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/s10propreto.png" onerror="this.src='s10propreto.png'" alt="" class="w-full h-full object-contain drop-shadow-2xl">
+                                <span class="absolute top-3 left-3 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">3 Cores</span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-black text-white mb-2">Smartwatch S10 Pro</h3>
+                                <div class="flex items-center space-x-2 mb-3">
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider font-bold">Cor:</span>
+                                    <button onclick="changeImage('home-s10pro', 's10propreto.png')" class="w-5 h-5 rounded-full bg-[#111] border border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Preto"></button>
+                                    <button onclick="changeImage('home-s10pro', 's10proprata.png')" class="w-5 h-5 rounded-full bg-[#d1d5db] border border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Prata"></button>
+                                    <button onclick="changeImage('home-s10pro', 'S10prodourado.png')" class="w-5 h-5 rounded-full bg-[#ca8a04] border border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Dourado"></button>
+                                </div>
+                                <p class="text-sm text-gray-400 mb-4 flex-grow">Tela AMOLED e chamadas Bluetooth.</p>
+                                <div class="flex justify-between items-center mb-6">
+                                    <span class="text-2xl font-black text-brand-light drop-shadow-sm">R$ 179,00</span>
+                                </div>
+                                <button onclick="buyProduct('Smartwatch S10 Pro')" class="w-full bg-brand-light text-black hover:bg-emerald-400 font-black py-4 px-4 rounded-xl transition-all duration-300 flex justify-center items-center shadow-[0_0_15px_rgba(16,185,129,0.3)] uppercase tracking-wide">
+                                    <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i> Eu Quero
+                                </button>
+                            </div>
+                        </div>
+
+                         <!-- Product Card 3 -->
+                         <div class="reveal reveal-delay-2 bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col h-full">
+                            <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
+                                <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/iPhone-11-PNG-Transparent-HD-Photo.png" onerror="this.src='iPhone-11-PNG-Transparent-HD-Photo.png'" alt="" class="w-full h-full object-contain drop-shadow-2xl">
+                                <span class="absolute top-3 right-3 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">Várias Cores</span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-black text-white mb-2">Linha iPhone 11</h3>
+                                <p class="text-sm text-gray-400 mb-4 flex-grow">O melhor custo-benefício. Testado e aprovado.</p>
+                                <div class="flex justify-between items-center mb-6">
+                                    <span class="text-xl font-bold text-brand-light drop-shadow-sm">Consulte valor</span>
+                                </div>
+                                <button onclick="buyProduct('Linha iPhone 11')" class="w-full bg-brand-dark hover:bg-brand-light text-brand-light hover:text-black font-black py-4 px-4 rounded-xl transition-all duration-300 flex justify-center items-center border border-brand-green uppercase tracking-wide">
+                                    <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i> Eu Quero
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="reveal reveal-delay-3 bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-brand-light/50 shadow-[0_0_20px_rgba(16,185,129,0.2)] card-hover-effect group flex flex-col h-full relative">
+                            <div class="absolute -top-3 -right-3 z-30 bg-brand-light text-black font-black px-4 py-1.5 rounded-full text-xs shadow-[0_0_15px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse">Lançamento</div>
+                            <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
+                                <img id="home-pulse" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.src='pulsefoto1.webp'" alt="" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500">
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-black text-white mb-2">Smartwatch Pulse</h3>
+                                <div class="flex items-center space-x-2 mb-3">
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider font-bold">Cor:</span>
+                                    <button onclick="changeImage('home-pulse', 'pulsefoto1.webp')" class="w-6 h-6 rounded-full bg-emerald-500 border border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Verde"></button>
+                                    <button onclick="changeImage('home-pulse', 'fotopulsedourado1.png')" class="w-6 h-6 rounded-full bg-[#ca8a04] border border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Dourado"></button>
+                                    <button onclick="changeImage('home-pulse', 'fotopulsepreto1.png')" class="w-6 h-6 rounded-full bg-[#111] border border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Preto"></button>
+                                </div>
+                                <p class="text-sm text-brand-light font-bold mb-4 flex-grow flex items-start leading-tight"><i data-lucide="droplets" class="w-5 h-5 mr-1 flex-shrink-0 mt-0.5"></i> Com resistência 3ATM, o Pulse resiste até 30 Metros de profundidade.</p>
+                                <div class="flex justify-between items-center mb-6">
+                                    <span class="text-2xl font-black text-brand-light drop-shadow-sm">R$ 229,00</span>
+                                </div>
+                                <button onclick="buyProduct('Smartwatch Pulse (Lançamento)')" class="w-full bg-brand-light text-black hover:bg-emerald-400 font-black py-4 px-4 rounded-xl transition-all duration-300 flex justify-center items-center shadow-[0_0_15px_rgba(16,185,129,0.3)] uppercase tracking-wide">
+                                    <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i> Eu Quero
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-16 text-center reveal">
+                        <button onclick="navigateTo('produtos')" class="inline-flex items-center text-gray-300 hover:text-white font-bold text-sm transition-all duration-300 border border-white/10 bg-white/5 backdrop-blur-sm px-6 py-3 rounded-full hover:bg-white/10 hover:border-white/30 uppercase tracking-widest">
+                            Ver Todos os Produtos <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PRODUTOS (GERAL) ==================== -->
+        <section id="produtos" class="page-section py-24 bg-brand-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl font-black text-white uppercase tracking-wider">Categorias</h2>
+                    <div class="w-24 h-1.5 bg-brand-light mx-auto mt-6 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Cat iPhones -->
+                    <div onclick="navigateTo('iphones')" class="reveal cursor-pointer relative rounded-3xl overflow-hidden group h-80 border-2 border-gray-800 hover:border-brand-light transition-all duration-500 shadow-2xl bg-gray-900 card-hover-effect">
+                        <div class="absolute inset-0 p-10 pb-28 flex items-center justify-center">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/png-transparent-iphone-12-removebg-preview.png" onerror="this.src='png-transparent-iphone-12-removebg-preview.png'" alt="" class="w-full h-full object-contain drop-shadow-2xl">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full transform group-hover:-translate-y-2 transition duration-500 z-20">
+                            <h3 class="text-3xl font-black text-white mb-2 uppercase tracking-widest drop-shadow-lg">iPhones</h3>
+                            <p class="text-brand-light font-bold text-sm uppercase tracking-wider">Aparelhos Testados</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cat Smartwatches -->
+                    <div onclick="navigateTo('smartwatches')" class="reveal reveal-delay-1 cursor-pointer relative rounded-3xl overflow-hidden group h-80 border-2 border-gray-800 hover:border-brand-light transition-all duration-500 shadow-2xl bg-gray-900 card-hover-effect">
+                        <div class="absolute inset-0 p-10 pb-28 flex items-center justify-center">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/s10propreto.png" onerror="this.src='s10propreto.png'" alt="" class="w-full h-full object-contain drop-shadow-2xl">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full transform group-hover:-translate-y-2 transition duration-500 z-20">
+                            <h3 class="text-3xl font-black text-white mb-2 uppercase tracking-widest drop-shadow-lg">Relógios</h3>
+                            <p class="text-brand-light font-bold text-sm uppercase tracking-wider">Tecnologia no pulso</p>
+                        </div>
+                    </div>
+
+                    <!-- Cat Acessórios -->
+                    <div onclick="openWhatsApp('Olá, gostaria de ver os acessórios disponíveis!')" class="reveal reveal-delay-2 cursor-pointer relative rounded-3xl overflow-hidden group h-80 border-2 border-gray-800 hover:border-brand-light transition-all duration-500 shadow-2xl bg-gray-900 card-hover-effect">
+                        <div class="absolute inset-0 p-10 pb-28 flex items-center justify-center">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/acessorios.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80'" alt="" class="w-full h-full object-contain drop-shadow-2xl">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full transform group-hover:-translate-y-2 transition duration-500 z-20">
+                            <h3 class="text-3xl font-black text-white mb-2 uppercase tracking-widest drop-shadow-lg">Acessórios</h3>
+                            <p class="text-brand-light font-bold text-sm uppercase tracking-wider">Compre via WhatsApp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== IPHONES ==================== -->
+        <section id="iphones" class="page-section py-24 bg-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                    <div>
+                        <h2 class="text-4xl font-black text-white uppercase tracking-wider">iPhones Premium</h2>
+                        <div class="w-24 h-1.5 bg-brand-light mt-6 rounded-full mb-6"></div>
+                        <p class="text-gray-400 max-w-2xl text-lg">
+                            Todos os nossos iPhones possuem <strong>IMEI limpo</strong>, testes rigorosos e a <strong>garantia exclusiva Garimpou</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <script>
+                        const iphonesCat = [
+                            { nome: 'Linha iPhone 13', desc: 'Bateria 90%+. Sem marcas de uso. Várias cores disponíveis.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png', fallback: 'Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png' },
+                            { nome: 'Linha iPhone 12', desc: 'Ótimo custo-benefício. Várias cores para você escolher.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/png-transparent-iphone-12-removebg-preview.png', fallback: 'png-transparent-iphone-12-removebg-preview.png' },
+                            { nome: 'Linha iPhone 11', desc: 'O queridinho. Funcionamento perfeito. Escolha sua cor.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/iPhone-11-PNG-Transparent-HD-Photo.png', fallback: 'iPhone-11-PNG-Transparent-HD-Photo.png' }
+                        ];
+                        
+                        iphonesCat.forEach((p, index) => {
+                            let delayClass = index === 0 ? '' : (index === 1 ? 'reveal-delay-1' : 'reveal-delay-2');
+                            document.write(`
+                                <div class="reveal ${delayClass} bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col">
+                                    <div class="h-64 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-6 relative flex items-center justify-center shadow-inner">
+                                        <img src="${p.img}" onerror="this.src='${p.fallback}'" alt="" class="w-full h-full object-contain drop-shadow-2xl">
+                                        <span class="absolute top-4 right-4 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">Várias Cores</span>
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wide">${p.nome}</h3>
+                                        <p class="text-base text-gray-400 mb-8 flex-grow">${p.desc}</p>
+                                        <button onclick="buyProduct('${p.nome}')" class="w-full bg-brand-light hover:bg-emerald-400 text-black font-black py-4 px-4 rounded-xl transition-all duration-300 flex justify-center items-center shadow-[0_0_15px_rgba(16,185,129,0.3)] uppercase tracking-widest">
+                                            Consultar Estoque
+                                        </button>
+                                    </div>
+                                </div>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SMARTWATCHES ==================== -->
+        <section id="smartwatches" class="page-section py-24 bg-gradient-to-b from-black to-brand-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl font-black text-white uppercase tracking-wider">Smartwatches</h2>
+                    <div class="w-24 h-1.5 bg-brand-light mx-auto mt-6 rounded-full mb-6"></div>
+                    <p class="text-gray-400 text-lg">Tecnologia, saúde e estilo no seu pulso.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    
+                    <!-- S10 Pro -->
+                    <div class="reveal bg-gradient-to-br from-brand-light/20 to-black rounded-[2rem] p-1 shadow-[0_0_30px_rgba(16,185,129,0.15)] relative card-hover-effect">
+                        <div class="absolute -top-4 -right-4 bg-brand-light text-black font-black px-5 py-2 rounded-full text-sm shadow-[0_0_20px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse z-30">O Mais Vendido</div>
+                        <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
+                            <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
+                                <img id="cat-s10pro" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S10prodourado.png" onerror="this.src='S10prodourado.png'" alt="" class="object-contain w-full h-full drop-shadow-2xl">
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">S10 Pro</h3>
+                            <div class="flex items-center space-x-2 mb-6">
+                                <span class="text-xs text-gray-400 uppercase tracking-wider font-bold">Cor:</span>
+                                <button onclick="changeImage('cat-s10pro', 'S10prodourado.png')" class="w-6 h-6 rounded-full bg-[#ca8a04] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Dourado"></button>
+                                <button onclick="changeImage('cat-s10pro', 's10proprata.png')" class="w-6 h-6 rounded-full bg-[#d1d5db] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Prata"></button>
+                                <button onclick="changeImage('cat-s10pro', 's10propreto.png')" class="w-6 h-6 rounded-full bg-[#111] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Preto"></button>
+                            </div>
+                            <ul class="text-gray-400 text-sm mb-8 flex-grow space-y-3 font-medium">
+                                <li class="flex items-center"><i data-lucide="monitor-play" class="w-5 h-5 mr-3 text-brand-light"></i> Ecrã Infinita AMOLED de Alta Definição</li>
+                                <li class="flex items-center"><i data-lucide="phone-call" class="w-5 h-5 mr-3 text-brand-light"></i> Faz e Recebe Chamadas via Bluetooth</li>
+                                <li class="flex items-center"><i data-lucide="zap" class="w-5 h-5 mr-3 text-brand-light"></i> Carregamento Rápido por Indução</li>
+                                <li class="flex items-center"><i data-lucide="heart-pulse" class="w-5 h-5 mr-3 text-brand-light"></i> Monitorização Completa de Saúde</li>
+                            </ul>
+                            <div class="text-3xl font-black text-brand-light mb-6 drop-shadow-md">R$ 179,00</div>
+                            <button onclick="buyProduct('Smartwatch S10 Pro')" class="w-full bg-brand-light hover:bg-emerald-400 text-black font-black py-4 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.3)] uppercase tracking-widest">
+                                Comprar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- S10 a relo -->
+                    <div class="reveal reveal-delay-1 bg-gray-800 rounded-[2rem] p-1 border border-gray-700 card-hover-effect">
+                        <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
+                            <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
+                                <img id="cat-s10" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S10%20(2).png" onerror="this.src='S10 (2).png'" alt="" class="object-contain w-full h-full drop-shadow-2xl">
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">S10</h3>
+                            <div class="flex items-center space-x-2 mb-6">
+                                <span class="text-xs text-gray-400 uppercase tracking-wider font-bold">Cor:</span>
+                                <button onclick="changeImage('cat-s10', 'S10 (1).png')" class="w-6 h-6 rounded-full bg-[#d1d5db] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Prata"></button>
+                                <button onclick="changeImage('cat-s10', 'S10 (2).png')" class="w-6 h-6 rounded-full bg-[#111] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Preto"></button>
+                                <button onclick="changeImage('cat-s10', 'S10 (3).png')" class="w-6 h-6 rounded-full bg-[#ca8a04] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Dourado"></button>
+                            </div>
+                            <ul class="text-gray-400 text-sm mb-8 flex-grow space-y-3 font-medium">
+                                <li class="flex items-center"><i data-lucide="bell-ring" class="w-5 h-5 mr-3 text-brand-light"></i> Notificações de Redes Sociais</li>
+                                <li class="flex items-center"><i data-lucide="activity" class="w-5 h-5 mr-3 text-brand-light"></i> Múltiplos Modos de Desporto</li>
+                                <li class="flex items-center"><i data-lucide="droplets" class="w-5 h-5 mr-3 text-brand-light"></i> Resistente à Água e Poeira</li>
+                                <li class="flex items-center"><i data-lucide="smartphone" class="w-5 h-5 mr-3 text-brand-light"></i> Compatível com iOS e Android</li>
+                            </ul>
+                            <div class="text-3xl font-black text-white mb-6">R$ 159,00</div>
+                            <button onclick="buyProduct('Smartwatch S10')" class="w-full bg-transparent border-2 border-brand-light text-brand-light hover:bg-brand-light hover:text-black font-black py-4 rounded-xl transition-all duration-300 uppercase tracking-widest">
+                                Comprar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- MA33 -->
+                    <div class="reveal reveal-delay-2 bg-gray-800 rounded-[2rem] p-1 border border-gray-700 card-hover-effect">
+                        <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
+                            <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
+                                <img id="cat-ma33" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/3.png" onerror="this.src='3.png'" alt="" class="object-contain w-full h-full drop-shadow-2xl">
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">MA33</h3>
+                            <div class="flex items-center space-x-2 mb-6">
+                                <span class="text-xs text-gray-400 uppercase tracking-wider font-bold">Cor:</span>
+                                <button onclick="changeImage('cat-ma33', 'Ma33.png')" class="w-6 h-6 rounded-full bg-[#f3f4f6] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Branco"></button>
+                                <button onclick="changeImage('cat-ma33', '3.png')" class="w-6 h-6 rounded-full bg-[#f97316] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Laranja"></button>
+                                <button onclick="changeImage('cat-ma33', '2.png')" class="w-6 h-6 rounded-full bg-[#111] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Preto"></button>
+                            </div>
+                            <ul class="text-gray-400 text-sm mb-8 flex-grow space-y-3 font-medium">
+                                <li class="flex items-center"><i data-lucide="battery-charging" class="w-5 h-5 mr-3 text-brand-light"></i> Bateria de Ultra Longa Duração</li>
+                                <li class="flex items-center"><i data-lucide="shield-alert" class="w-5 h-5 mr-3 text-brand-light"></i> Design Robusto à Prova de Choques</li>
+                                <li class="flex items-center"><i data-lucide="compass" class="w-5 h-5 mr-3 text-brand-light"></i> Ideal para Aventuras e Ar Livre</li>
+                                <li class="flex items-center"><i data-lucide="moon" class="w-5 h-5 mr-3 text-brand-light"></i> Análise Avançada do Sono</li>
+                            </ul>
+                            <div class="text-3xl font-black text-white mb-6">R$ 189,00</div>
+                            <button onclick="buyProduct('Smartwatch MA33')" class="w-full bg-transparent border-2 border-brand-light text-brand-light hover:bg-brand-light hover:text-black font-black py-4 rounded-xl transition-all duration-300 uppercase tracking-widest">
+                                Comprar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pulse -->
+                    <div class="reveal reveal-delay-3 bg-gradient-to-br from-brand-light/10 to-gray-900 rounded-[2rem] p-1 border border-brand-light/50 shadow-[0_0_30px_rgba(16,185,129,0.2)] relative card-hover-effect">
+                        <div class="absolute -top-4 -right-4 bg-brand-light text-black font-black px-5 py-2 rounded-full text-sm shadow-[0_0_20px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse z-30">Lançamento</div>
+                        <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
+                            <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
+                                <img id="cat-pulse" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80'" alt="" class="object-contain w-full h-full drop-shadow-2xl transition-transform duration-500">
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">Pulse</h3>
+                            <div class="flex items-center space-x-2 mb-6">
+                                <span class="text-xs text-gray-400 uppercase tracking-wider font-bold">Cor:</span>
+                                <button onclick="changeImage('cat-pulse', 'pulsefoto1.webp')" class="w-7 h-7 rounded-full bg-emerald-500 border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Verde"></button>
+                                <button onclick="changeImage('cat-pulse', 'fotopulsedourado1.png')" class="w-7 h-7 rounded-full bg-[#ca8a04] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Dourado"></button>
+                                <button onclick="changeImage('cat-pulse', 'fotopulsepreto1.png')" class="w-7 h-7 rounded-full bg-[#111] border-2 border-gray-600 hover:border-brand-light focus:ring-2 focus:ring-brand-light transition" title="Preto"></button>
+                            </div>
+                            <ul class="text-gray-400 text-sm mb-8 flex-grow space-y-3 font-medium">
+                                <li class="flex items-start text-brand-light font-bold"><i data-lucide="droplets" class="w-5 h-5 mr-3 text-brand-light flex-shrink-0 mt-0.5"></i> <span>Com resistência 3ATM, o Pulse resiste até 30 Metros de profundidade.</span></li>
+                                <li class="flex items-center"><i data-lucide="watch" class="w-5 h-5 mr-3 text-brand-light"></i> Design Desportivo Premium</li>
+                                <li class="flex items-center"><i data-lucide="sun" class="w-5 h-5 mr-3 text-brand-light"></i> Ecrã de Alta Visibilidade</li>
+                                <li class="flex items-center"><i data-lucide="activity" class="w-5 h-5 mr-3 text-brand-light"></i> Sensores de Saúde Avançados</li>
+                            </ul>
+                            <div class="text-3xl font-black text-brand-light mb-6">R$ 229,00</div>
+                            <button onclick="buyProduct('Smartwatch Pulse (Lançamento)')" class="w-full bg-brand-light hover:bg-emerald-400 text-black font-black py-4 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.3)] uppercase tracking-widest">
+                                Comprar Agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SOBRE NÓS & GARANTIA ==================== -->
+        <section id="sobre" class="page-section py-24 bg-black relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute -left-40 top-20 w-96 h-96 bg-brand-green/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                    <!-- História -->
+                    <div class="reveal">
+                        <div class="w-24 h-2 bg-brand-light mb-8 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                        <h2 class="text-4xl font-black text-white mb-8 uppercase tracking-widest">A Garimpou</h2>
+                        <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                            Nascemos em <strong class="text-white">Queimadas - BA</strong> com uma missão clara: democratizar o acesso à tecnologia de qualidade. Percebemos que era difícil encontrar aparelhos confiáveis, testados e com garantia justa na nossa região.
+                        </p>
+                        <p class="text-gray-300 mb-10 leading-relaxed text-lg">
+                            É por isso que nos chamamos <span class="text-brand-light font-black uppercase tracking-wider drop-shadow-md">Garimpou</span>. Nós fazemos o trabalho duro de garimpar os melhores fornecedores, os aparelhos mais íntegros e os acessórios mais modernos, para entregar diretamente a você um produto que realmente <em class="text-white font-bold">vale a pena</em>.
+                        </p>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="bg-gray-900 p-6 rounded-2xl border-l-4 border-brand-light shadow-lg hover:-translate-y-1 transition duration-300">
+                                <h4 class="text-xl font-black text-white uppercase tracking-wide">Missão</h4>
+                                <p class="text-sm text-gray-400 mt-2">Levar inovação acessível para cada cidadão de Queimadas e região.</p>
+                            </div>
+                            <div class="bg-gray-900 p-6 rounded-2xl border-l-4 border-brand-light shadow-lg hover:-translate-y-1 transition duration-300">
+                                <h4 class="text-xl font-black text-white uppercase tracking-wide">Visão</h4>
+                                <p class="text-sm text-gray-400 mt-2">Ser a principal referência em segurança na compra de eletrônicos no sertão baiano.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Garantia -->
+                    <div id="garantia-section" class="reveal reveal-delay-1 bg-gradient-to-br from-brand-dark to-black p-10 rounded-[2.5rem] border border-brand-green/30 shadow-[0_0_40px_rgba(16,185,129,0.1)] relative">
+                        <div class="absolute top-0 right-10 transform -translate-y-1/2 bg-brand-light p-4 rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.5)]">
+                            <i data-lucide="shield" class="w-10 h-10 text-black"></i>
+                        </div>
+                        <h2 class="text-3xl font-black text-white mb-6 uppercase tracking-wider mt-4">Garantia Garimpou</h2>
+                        <p class="text-gray-300 text-lg mb-10">
+                            Transparente e sem letras miúdas. Estamos na sua cidade para resolver, não para enrolar.
+                        </p>
+                        <ul class="space-y-8">
+                            <li class="flex items-start group">
+                                <div class="bg-brand-green/20 p-3 rounded-xl mr-5 group-hover:bg-brand-light group-hover:text-black transition duration-300">
+                                    <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-light group-hover:text-black transition"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-black text-lg uppercase tracking-wide">Cobertura Total</h5>
+                                    <p class="text-gray-400 text-sm mt-1 leading-relaxed">Cobre qualquer defeito de fábrica em placas, câmeras, sensores e bateria.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start group">
+                                <div class="bg-red-900/20 p-3 rounded-xl mr-5 group-hover:bg-red-500 group-hover:text-white transition duration-300">
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-red-500 group-hover:text-white transition"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-black text-lg uppercase tracking-wide">O que não cobrimos</h5>
+                                    <p class="text-gray-400 text-sm mt-1 leading-relaxed">Mau uso, quedas, trincos, oxidação por água e quebra de selos de segurança.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start group">
+                                <div class="bg-brand-green/20 p-3 rounded-xl mr-5 group-hover:bg-brand-light group-hover:text-black transition duration-300">
+                                    <i data-lucide="clock" class="w-6 h-6 text-brand-light group-hover:text-black transition"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-black text-lg uppercase tracking-wide">Prazos</h5>
+                                    <p class="text-gray-400 text-sm mt-1 leading-relaxed">Garantia de 1 mês nos iPhones e Smartwatches para defeitos de fábrica, e 7 dias para defeitos imediatos.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-brand-green/30 py-12 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-light to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="flex items-center mb-6 md:mb-0 cursor-pointer" onclick="navigateTo('home')">
+                    <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png" onerror="this.src='https://ui-avatars.com/api/?name=G&background=10b981&color=000'" alt="" class="h-10 w-10 rounded-full mr-3 object-cover shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                    <span class="font-black text-2xl tracking-widest text-white uppercase">Garimpou</span>
+                </div>
+                <div class="text-gray-500 text-sm text-center md:text-right font-medium">
+                    &copy; 2026 Garimpou. Todos os direitos reservados.<br>
+                    <span class="text-brand-light/70 uppercase tracking-widest text-xs mt-1 block">Queimadas - BA • Enviamos para todo o Brasil</span>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 flex flex-col items-center justify-center text-center">
+                <p class="text-gray-400 italic text-sm font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
+                    "Porque dele e por ele, e para ele, são todas as coisas; glória, pois, a ele eternamente. Amém." <br>
+                    <span class="font-bold text-brand-light not-italic mt-2 block text-xs tracking-widest uppercase">- Romanos 11:36</span>
+                </p>
+                <p class="text-xs text-gray-600 uppercase tracking-widest mt-6">
+                    Site criado por <span class="text-brand-light font-black tracking-widest">Guilherme Pereira</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp Pulsante -->
+    <button onclick="openWhatsApp('Olá, estava navegando no site e preciso de ajuda!')" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-5 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.6)] hover:bg-[#1ebd5a] transition-all transform hover:scale-110 z-50 flex items-center justify-center group overflow-hidden">
+        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full animate-sweep pointer-events-none"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone group-hover:animate-[bounce_1s_infinite] relative z-10"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </button>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar ícones do Lucide
+        lucide.createIcons();
+
+        // Configuração do WhatsApp da loja
+        const WHATSAPP_NUMBER = '557599698012';
+
+        // Lógica de Navegação
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const targetSection = document.getElementById(pageId);
+            if(targetSection) {
+                targetSection.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Re-disparar animações de scroll na nova aba
+                setTimeout(revealElements, 100);
+            }
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-white');
+                link.classList.add('text-gray-300');
+            });
+            event && event.target && event.target.classList.add('text-white');
+        }
+
+        // Toggle Mobile Menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Função para abrir WhatsApp
+        function openWhatsApp(message) {
+            const encodedMessage = encodeURIComponent(message);
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            window.open(url, '_blank');
+        }
+
+        function buyProduct(productName) {
+            const message = `Olá! Vi no site e tenho interesse no produto: *${productName}*. Pode me dar mais informações sobre valor e disponibilidade (e sobre os envios)?`;
+            openWhatsApp(message);
+        }
+
+        // Função para alterar a imagem ao clicar nas cores
+        function changeImage(imgId, fileName) {
+            const imgElement = document.getElementById(imgId);
+            if (imgElement) {
+                // Efeito de fade out rápido
+                imgElement.style.opacity = '0.3';
+                
+                setTimeout(() => {
+                    imgElement.src = `https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/${fileName}`;
+                    
+                    // Fallback inteligente caso a imagem não carregue do GitHub
+                    imgElement.onerror = function() {
+                        this.onerror = null;
+                        this.src = 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80';
+                    };
+                    
+                    // Retorna a opacidade ao normal
+                    imgElement.style.opacity = '1';
+                }, 150);
+            }
+        }
+
+        // Lógica de Animação de Scroll (Reveal)
+        function revealElements() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Começa a revelar 100px antes de aparecer totalmente
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", revealElements);
+
+        // Inicializar
+        window.onload = () => {
+            const hash = window.location.hash.substring(1);
+            if(hash && document.getElementById(hash)) {
+                navigateTo(hash);
+            } else {
+                revealElements(); // Disparar primeira vez na home
+            }
+        };
+
+        // --- LÓGICA DO EFEITO 3D NO HERO ---
+        const heroWrapper = document.getElementById('hero-3d-wrapper');
+        const heroInner = document.getElementById('hero-3d-inner');
+
+        if (heroWrapper && heroInner) {
+            // Efeito acompanhando o mouse (Apenas Desktop)
+            heroWrapper.addEventListener('mousemove', (e) => {
+                const rect = heroWrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Calcula a rotação (multiplicador define a intensidade)
+                const rotateX = ((y - centerY) / centerY) * -15; 
+                const rotateY = ((x - centerX) / centerX) * 15;
+
+                heroInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            // Restaura posição quando o mouse sai
+            heroWrapper.addEventListener('mouseleave', () => {
+                heroInner.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                heroInner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
+
+            // Remove a transição suave durante o movimento para ser responsivo
+            heroWrapper.addEventListener('mouseenter', () => {
+                heroInner.style.transition = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
