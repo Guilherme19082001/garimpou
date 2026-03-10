@@ -3,22 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garimpou | Tecnologia que vale a pena em Queimadas-BA</title>
-    <meta name="description" content="Loja especializada em iPhones seminovos testados, Smartwatches e Acessórios em Queimadas, Bahia. Garantia, qualidade e atendimento local. Enviamos para todo o Brasil.">
+    <!-- TÍTULO OTIMIZADO PARA SEO -->
+    <title>Garimpou | Comprar iPhones Seminovos e Smartwatches em Queimadas-BA</title>
+    <!-- DESCRIÇÃO OTIMIZADA PARA SEO -->
+    <meta name="description" content="A melhor loja de iPhones seminovos originais, Smartwatches premium (Pulse, S10 Pro) e acessórios em Queimadas, Bahia. Aparelhos testados com garantia e envio para todo o Brasil.">
+    <!-- PALAVRAS-CHAVE (KEYWORDS) -->
+    <meta name="keywords" content="iPhones seminovos, comprar iPhone Queimadas, Apple, Smartwatch Pulse, S10 Pro, acessórios para celular, loja de eletrônicos Bahia, garantia iPhone, celulares baratos Queimadas">
     
+    <!-- Open Graph (Para ficar bonito quando enviar o link no WhatsApp/Instagram) -->
+    <meta property="og:title" content="Garimpou | iPhones e Smartwatches Premium">
+    <meta property="og:description" content="Loja especializada em iPhones seminovos testados e Smartwatches em Queimadas, Bahia. Enviamos para todo o Brasil.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
     <!-- Preconnects para acelerar fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://raw.githubusercontent.com">
     
-    <!-- Tailwind CSS (Aviso de Performance abaixo) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons (Com defer para não bloquear a renderização) -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- DADOS ESTRUTURADOS PARA O GOOGLE (SEO LOCAL) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ElectronicsStore",
+      "name": "Garimpou",
+      "image": "https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png",
+      "description": "Loja especializada em venda de iPhones seminovos premium, Smartwatches e acessórios em Queimadas, Bahia.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Queimadas",
+        "addressRegion": "BA",
+        "addressCountry": "BR"
+      },
+      "telephone": "+557599698012",
+      "priceRange": "$$"
+    }
+    </script>
 
     <!-- Tailwind Config for Custom Colors and Animations -->
     <script>
@@ -141,7 +171,7 @@
             will-change: transform;
         }
         #hero-3d-inner img {
-            transform: translateZ(80px); /* Faz o relógio "saltar" da tela */
+            transform: translateZ(80px); 
         }
         
         /* Grid de fundo premium */
@@ -171,7 +201,7 @@
                 <div class="flex justify-between items-center h-20">
                     <!-- Logo -->
                     <div class="flex-shrink-0 flex items-center cursor-pointer group" onclick="navigateTo('home')">
-                        <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png" onerror="this.src='https://ui-avatars.com/api/?name=G&background=10b981&color=000'" alt="" class="h-12 w-12 rounded-full mr-3 object-cover shadow-[0_0_15px_rgba(16,185,129,0.4)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] transition duration-300">
+                        <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png" onerror="this.src='https://ui-avatars.com/api/?name=G&background=10b981&color=000'" alt="Logotipo Garimpou Eletrônicos Queimadas BA" class="h-12 w-12 rounded-full mr-3 object-cover shadow-[0_0_15px_rgba(16,185,129,0.4)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] transition duration-300">
                         <span class="font-black text-3xl tracking-widest text-white uppercase bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:from-brand-light group-hover:to-white transition-all duration-500">Garimpou</span>
                     </div>
                     
@@ -213,8 +243,11 @@
         </nav>
     </header>
 
-    <!-- Main Content Area (ajustado pt-28 para acomodar a top bar) -->
+    <!-- Main Content Area -->
     <main class="flex-grow pt-28">
+
+        <!-- TÍTULO H1 INVISÍVEL PARA SEO DO GOOGLE -->
+        <h1 class="sr-only">Garimpou - Loja de iPhones Seminovos, Smartwatches e Acessórios em Queimadas, Bahia. Enviamos para todo o Brasil.</h1>
 
         <!-- ==================== HOME PAGE ==================== -->
         <section id="home" class="page-section active">
@@ -238,10 +271,11 @@
                             Queimadas - Bahia
                         </span>
                         
-                        <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight drop-shadow-2xl">
+                        <!-- Alterado para H2 para manter a hierarquia de SEO do H1 oculto acima -->
+                        <h2 class="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight drop-shadow-2xl">
                             O FUTURO <br/>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-brand-light to-white bg-[length:200%_auto] animate-text-shimmer drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">NO SEU PULSO.</span>
-                        </h1>
+                        </h2>
                         
                         <p class="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-gray-400 font-light leading-relaxed reveal reveal-delay-1">
                             A <strong class="text-white font-bold">Garimpou</strong> traz para si a mais alta tecnologia em Smartwatches e iPhones premium. Aparelhos testados, garantia absoluta e <strong class="text-brand-light font-bold">envio para todo o Brasil.</strong>
@@ -266,7 +300,7 @@
                         
                         <!-- Elemento que inclina -->
                         <div id="hero-3d-inner" class="relative z-10 w-64 h-64 md:w-96 md:h-96 xl:w-[500px] xl:h-[500px] cursor-pointer">
-                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.src='pulsefoto1.webp'" alt="" class="w-full h-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)]" fetchpriority="high">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.src='pulsefoto1.webp'" alt="Comprar Smartwatch Pulse Lançamento em Queimadas BA" class="w-full h-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)]" fetchpriority="high">
                             
                             <!-- Elementos flutuantes para aumentar efeito 3D -->
                             <div class="absolute -top-10 -right-10 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl transform translate-z-[100px] hidden md:block" style="transform: translateZ(100px);">
@@ -332,7 +366,7 @@
                         <!-- Product Card 1 -->
                         <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col h-full">
                             <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
-                                <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png" onerror="this.src='Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
+                                <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png" onerror="this.src='Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png'" alt="Comprar iPhone 13 Seminovo com Garantia" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
                                 <span class="absolute top-3 right-3 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">Várias Cores</span>
                             </div>
                             <div class="p-6 flex flex-col flex-grow">
@@ -351,7 +385,7 @@
                         <div class="reveal reveal-delay-1 bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col h-full relative">
                             <div class="absolute -top-3 -right-3 z-30 bg-brand-light text-black font-black px-4 py-1.5 rounded-full text-xs shadow-[0_0_15px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse">Top Venda</div>
                             <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
-                                <img id="home-s10pro" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/s10propreto.png" onerror="this.src='s10propreto.png'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
+                                <img id="home-s10pro" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/s10propreto.png" onerror="this.src='s10propreto.png'" alt="Comprar Smartwatch S10 Pro Amoled" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
                                 <span class="absolute top-3 left-3 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">3 Cores</span>
                             </div>
                             <div class="p-6 flex flex-col flex-grow">
@@ -375,7 +409,7 @@
                          <!-- Product Card 3 -->
                          <div class="reveal reveal-delay-2 bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col h-full">
                             <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
-                                <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/iPhone-11-PNG-Transparent-HD-Photo.png" onerror="this.src='iPhone-11-PNG-Transparent-HD-Photo.png'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
+                                <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/iPhone-11-PNG-Transparent-HD-Photo.png" onerror="this.src='iPhone-11-PNG-Transparent-HD-Photo.png'" alt="Comprar iPhone 11 Seminovo Barato" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
                                 <span class="absolute top-3 right-3 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">Várias Cores</span>
                             </div>
                             <div class="p-6 flex flex-col flex-grow">
@@ -394,7 +428,7 @@
                         <div class="reveal reveal-delay-3 bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-brand-light/50 shadow-[0_0_20px_rgba(16,185,129,0.2)] card-hover-effect group flex flex-col h-full relative">
                             <div class="absolute -top-3 -right-3 z-30 bg-brand-light text-black font-black px-4 py-1.5 rounded-full text-xs shadow-[0_0_15px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse">Lançamento</div>
                             <div class="relative h-56 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-4 flex items-center justify-center shadow-inner">
-                                <img id="home-pulse" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.src='pulsefoto1.webp'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500">
+                                <img id="home-pulse" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.src='pulsefoto1.webp'" alt="Smartwatch Pulse Preto Lançamento" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500">
                             </div>
                             <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-xl font-black text-white mb-2">Smartwatch Pulse</h3>
@@ -436,7 +470,7 @@
                     <!-- Cat iPhones -->
                     <div onclick="navigateTo('iphones')" class="reveal cursor-pointer relative rounded-3xl overflow-hidden group h-80 border-2 border-gray-800 hover:border-brand-light transition-all duration-500 shadow-2xl bg-gray-900 card-hover-effect">
                         <div class="absolute inset-0 p-10 pb-28 flex items-center justify-center">
-                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/png-transparent-iphone-12-removebg-preview.png" onerror="this.src='png-transparent-iphone-12-removebg-preview.png'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/png-transparent-iphone-12-removebg-preview.png" onerror="this.src='png-transparent-iphone-12-removebg-preview.png'" alt="Catálogo de iPhones Seminovos Garimpou" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 w-full transform group-hover:-translate-y-2 transition duration-500 z-20">
@@ -448,7 +482,7 @@
                     <!-- Cat Smartwatches -->
                     <div onclick="navigateTo('smartwatches')" class="reveal reveal-delay-1 cursor-pointer relative rounded-3xl overflow-hidden group h-80 border-2 border-gray-800 hover:border-brand-light transition-all duration-500 shadow-2xl bg-gray-900 card-hover-effect">
                         <div class="absolute inset-0 p-10 pb-28 flex items-center justify-center">
-                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/s10propreto.png" onerror="this.src='s10propreto.png'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/s10propreto.png" onerror="this.src='s10propreto.png'" alt="Catálogo de Smartwatches Premium" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 w-full transform group-hover:-translate-y-2 transition duration-500 z-20">
@@ -460,7 +494,7 @@
                     <!-- Cat Acessórios -->
                     <div onclick="openWhatsApp('Olá, gostaria de ver os acessórios disponíveis!')" class="reveal reveal-delay-2 cursor-pointer relative rounded-3xl overflow-hidden group h-80 border-2 border-gray-800 hover:border-brand-light transition-all duration-500 shadow-2xl bg-gray-900 card-hover-effect">
                         <div class="absolute inset-0 p-10 pb-28 flex items-center justify-center">
-                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/acessorios.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
+                            <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/acessorios.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80'" alt="Acessórios para Celulares Garimpou" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 w-full transform group-hover:-translate-y-2 transition duration-500 z-20">
@@ -507,7 +541,7 @@
                         <div class="absolute -top-4 -right-4 bg-brand-light text-black font-black px-5 py-2 rounded-full text-sm shadow-[0_0_20px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse z-30">O Mais Vendido</div>
                         <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
                             <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
-                                <img id="cat-s10pro" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S10prodourado.png" onerror="this.src='S10prodourado.png'" alt="" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl">
+                                <img id="cat-s10pro" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S10prodourado.png" onerror="this.src='S10prodourado.png'" alt="Comprar Smartwatch S10 Pro Dourado" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl">
                             </div>
                             <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">S10 Pro</h3>
                             <div class="flex items-center space-x-2 mb-6">
@@ -533,7 +567,7 @@
                     <div class="reveal reveal-delay-1 bg-gray-800 rounded-[2rem] p-1 border border-gray-700 card-hover-effect">
                         <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
                             <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
-                                <img id="cat-s10" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S10%20(2).png" onerror="this.src='S10 (2).png'" alt="" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl">
+                                <img id="cat-s10" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S10%20(2).png" onerror="this.src='S10 (2).png'" alt="Comprar Smartwatch S10 Barato Queimadas" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl">
                             </div>
                             <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">S10</h3>
                             <div class="flex items-center space-x-2 mb-6">
@@ -559,7 +593,7 @@
                     <div class="reveal reveal-delay-2 bg-gray-800 rounded-[2rem] p-1 border border-gray-700 card-hover-effect">
                         <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
                             <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
-                                <img id="cat-ma33" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/3.png" onerror="this.src='3.png'" alt="" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl">
+                                <img id="cat-ma33" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/3.png" onerror="this.src='3.png'" alt="Comprar Smartwatch MA33 Laranja Aventura" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl">
                             </div>
                             <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">MA33</h3>
                             <div class="flex items-center space-x-2 mb-6">
@@ -586,7 +620,7 @@
                         <div class="absolute -top-4 -right-4 bg-brand-light text-black font-black px-5 py-2 rounded-full text-sm shadow-[0_0_20px_rgba(16,185,129,0.6)] uppercase tracking-widest animate-pulse z-30">Lançamento</div>
                         <div class="bg-gray-950 rounded-[1.8rem] h-full p-8 flex flex-col">
                             <div class="h-56 mb-6 flex justify-center items-center overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-black p-4 shadow-inner">
-                                <img id="cat-pulse" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80'" alt="[Image of Pulse]" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl transition-transform duration-500">
+                                <img id="cat-pulse" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/pulsefoto1.webp" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80'" alt="Smartwatch Pulse Á Prova d'água 3ATM" loading="lazy" class="object-contain w-full h-full drop-shadow-2xl transition-transform duration-500">
                             </div>
                             <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">Pulse</h3>
                             <div class="flex items-center space-x-2 mb-6">
@@ -691,7 +725,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <div class="flex items-center mb-6 md:mb-0 cursor-pointer" onclick="navigateTo('home')">
-                    <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png" onerror="this.src='https://ui-avatars.com/api/?name=G&background=10b981&color=000'" alt="" loading="lazy" class="h-10 w-10 rounded-full mr-3 object-cover shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                    <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png" onerror="this.src='https://ui-avatars.com/api/?name=G&background=10b981&color=000'" alt="Logotipo Garimpou Eletrônicos Queimadas BA" loading="lazy" class="h-10 w-10 rounded-full mr-3 object-cover shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                     <span class="font-black text-2xl tracking-widest text-white uppercase">Garimpou</span>
                 </div>
                 <div class="text-gray-500 text-sm text-center md:text-right font-medium">
@@ -722,9 +756,9 @@
     <script>
         // Renderizar Produtos (Sem usar document.write)
         const iphonesCat = [
-            { nome: 'Linha iPhone 13', desc: 'Bateria 90%+. Sem marcas de uso. Várias cores disponíveis.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png', fallback: 'Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png' },
-            { nome: 'Linha iPhone 12', desc: 'Ótimo custo-benefício. Várias cores para você escolher.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/png-transparent-iphone-12-removebg-preview.png', fallback: 'png-transparent-iphone-12-removebg-preview.png' },
-            { nome: 'Linha iPhone 11', desc: 'O queridinho. Funcionamento perfeito. Escolha sua cor.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/iPhone-11-PNG-Transparent-HD-Photo.png', fallback: 'iPhone-11-PNG-Transparent-HD-Photo.png' }
+            { nome: 'Linha iPhone 13', desc: 'Bateria 90%+. Sem marcas de uso. Várias cores disponíveis.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png', fallback: 'Apple-iPhone13-color-lineup-220308_big_carousel.jpg.large-removebg-preview.png', altSEO: 'Comprar iPhone 13 Seminovo Queimadas BA' },
+            { nome: 'Linha iPhone 12', desc: 'Ótimo custo-benefício. Várias cores para você escolher.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/png-transparent-iphone-12-removebg-preview.png', fallback: 'png-transparent-iphone-12-removebg-preview.png', altSEO: 'Comprar iPhone 12 Seminovo com Garantia' },
+            { nome: 'Linha iPhone 11', desc: 'O queridinho. Funcionamento perfeito. Escolha sua cor.', img: 'https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/iPhone-11-PNG-Transparent-HD-Photo.png', fallback: 'iPhone-11-PNG-Transparent-HD-Photo.png', altSEO: 'Comprar iPhone 11 Seminovo Barato' }
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -736,7 +770,7 @@
                     html += `
                         <div class="reveal ${delayClass} bg-gray-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-gray-800 card-hover-effect group flex flex-col">
                             <div class="h-64 bg-gradient-to-br from-gray-800 to-black overflow-hidden p-6 relative flex items-center justify-center shadow-inner">
-                                <img src="${p.img}" onerror="this.src='${p.fallback}'" alt="" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
+                                <img src="${p.img}" onerror="this.src='${p.fallback}'" alt="${p.altSEO}" loading="lazy" class="w-full h-full object-contain drop-shadow-2xl">
                                 <span class="absolute top-4 right-4 bg-black text-brand-light border border-brand-light text-xs font-black px-3 py-1.5 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)] uppercase tracking-wider z-20">Várias Cores</span>
                             </div>
                             <div class="p-8 flex flex-col flex-grow">
