@@ -7,8 +7,14 @@
     <meta name="description" content="Loja de Smartwatches premium (Ultra 5, W11x, S11mini, SU01) com envio para todo Brasil. Compre e ganhe 1 pulseira de brinde!">
     <meta name="keywords" content="smartwatches, comprar smartwatch, relógio inteligente, pulseira brinde, garimpou">
     
+    <!-- OTIMIZAÇÕES DE PERFORMANCE -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    
+    <!-- Pré-carregar a imagem principal do Hero para o site abrir mais rápido (LCP) -->
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -112,11 +118,11 @@
                 
                 <h1 class="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
                     O Futuro no seu Pulso. <br class="hidden md:block">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-emerald-700">Exatamente como merece.</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-emerald-700">Exatamente como você merece.</span>
                 </h1>
                 
                 <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
-                    Descubra a linha de Smartwatches mais cobiçada do momento. Ecrãs de altíssima resolução, sensores de saúde reais e conectividade total. Feche a sua encomenda hoje e leve <strong class="text-gray-900 font-black">1 Pulseira Extra de Brinde</strong> exclusiva em qualquer modelo.
+                    Descubra a linha de Smartwatches mais cobiçada do momento. Telas de altíssima resolução, sensores de saúde reais e conectividade total. Faça o seu pedido hoje e leve <strong class="text-gray-900 font-black">1 Pulseira Extra de Brinde</strong> exclusiva em qualquer modelo.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm font-bold text-gray-700 uppercase tracking-widest">
@@ -138,7 +144,7 @@
                         
                         <!-- FOTO PRINCIPAL QUADRADA -->
                         <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                            <img id="cat-w11x" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/w11xfotospreto.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                            <img id="cat-w11x" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/w11xfotospreto.png" fetchpriority="high" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" alt="Smartwatch W11x">
                         </div>
 
                         <!-- GALERIA HORIZONTAL -->
@@ -204,7 +210,7 @@
                         <div class="absolute top-6 right-6 z-30 bg-gray-900 text-white font-black px-4 py-1.5 rounded-full text-xs shadow-md border border-gray-700 uppercase tracking-widest">Design Robusto</div>
                         
                         <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                            <img id="cat-u5" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/u5fotospreto.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                            <img id="cat-u5" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/u5fotospreto.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" alt="Smartwatch Ultra 5">
                         </div>
 
                         <div class="mb-6">
@@ -263,7 +269,7 @@
                         <div class="absolute top-6 right-6 z-30 bg-blue-600 text-white font-black px-4 py-1.5 rounded-full text-xs shadow-md uppercase tracking-widest">GPS + 3ATM</div>
                         
                         <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center relative border border-gray-100">
-                            <img id="cat-su01" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/su01preto.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                            <img id="cat-su01" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/su01preto.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" alt="Smartwatch SU01">
                             <!-- Selo Mergulho Visível na Imagem -->
                             <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm border border-gray-200 px-3 py-1.5 rounded-lg text-gray-900 text-[10px] font-bold uppercase tracking-widest flex items-center shadow-sm">
                                 <i data-lucide="droplets" class="w-3 h-3 text-blue-500 mr-1.5"></i> Mergulho
@@ -316,7 +322,7 @@
                                     <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400"></i>
                                 </summary>
                                 <div class="text-gray-600 text-sm p-4 pt-0 leading-relaxed font-normal">
-                                    Ecrã circular AMOLED de 1.43" com cores vivas e pretos perfeitos. Bateria colossal de 400mAh para vários dias longe da tomada.
+                                    Tela circular AMOLED de 1.43" com cores vivas e pretos perfeitos. Bateria colossal de 400mAh para vários dias longe da tomada.
                                 </div>
                             </details>
                         </div>
@@ -327,7 +333,7 @@
                         <div class="absolute top-6 right-6 z-30 bg-purple-600 text-white font-black px-4 py-1.5 rounded-full text-xs shadow-md uppercase tracking-widest">Tamanho 42mm</div>
                         
                         <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                            <img id="cat-s11mini" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S11MINIFOTOSPRETO.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                            <img id="cat-s11mini" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S11MINIFOTOSPRETO.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" alt="Smartwatch S11mini">
                         </div>
 
                         <div class="mb-6">
@@ -440,8 +446,8 @@
                 <p class="text-gray-500 text-sm mb-6 font-normal">O pagamento é processado oficialmente pela plataforma da Ton.</p>
                 
                 <div class="bg-gray-50 rounded-xl p-4 text-left mb-6 border border-gray-200">
-                    <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest mb-2 flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-2 text-brand-green"></i> E a morada / frete?</h4>
-                    <p class="text-gray-600 text-xs leading-relaxed font-normal">Preencha os seus dados de contacto no pagamento. Imediatamente após a aprovação, <strong class="text-gray-900 font-bold">vamos enviar-lhe mensagem no WhatsApp</strong> para confirmar o endereço de entrega e a cor da sua pulseira de brinde!</p>
+                    <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest mb-2 flex items-center"><i data-lucide="map-pin" class="w-3.5 h-3.5 mr-2 text-brand-green"></i> E o endereço / frete?</h4>
+                    <p class="text-gray-600 text-xs leading-relaxed font-normal">Preencha seus dados de contato no pagamento. Imediatamente após a aprovação, <strong class="text-gray-900 font-bold">vamos te enviar uma mensagem no WhatsApp</strong> para confirmar o endereço de entrega e a cor da sua pulseira de brinde!</p>
                 </div>
 
                 <button id="btn-proceed-payment" class="w-full bg-brand-green hover:bg-brand-darkGreen text-white font-black py-4 rounded-xl transition-all uppercase tracking-widest text-sm mb-3 shadow-md">
@@ -483,15 +489,15 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // --- SISTEMA DE GALERIAS ---
+        // --- SISTEMA DE GALERIAS (OTIMIZADO PARA PERFORMANCE) ---
         function criarBotoesGaleria(idContent, idImg, fotosArray) {
             const container = document.getElementById(idContent);
             if(!container) return;
             let html = '';
             fotosArray.forEach(img => {
                 html += `
-                <button onclick="changeImage('${idImg}', '${img}')" class="flex-shrink-0 w-16 h-16 rounded-xl border border-gray-200 hover:border-brand-green focus:border-brand-green overflow-hidden transition-all duration-300 bg-white shadow-sm">
-                    <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/${img}" loading="lazy" class="w-full h-full object-cover">
+                <button onclick="changeImage('${idImg}', '${img}')" class="flex-shrink-0 w-16 h-16 rounded-xl border border-gray-200 hover:border-brand-green focus:border-brand-green overflow-hidden transition-all duration-300 bg-white shadow-sm" aria-label="Ver detalhe da foto">
+                    <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/${img}" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-80 hover:opacity-100" alt="Detalhe do relógio">
                 </button>`;
             });
             container.innerHTML = html;
