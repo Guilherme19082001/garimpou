@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garimpou | Smartwatches Premium em Queimadas-BA</title>
-    <meta name="description" content="Loja de Smartwatches premium com envio para todo Brasil. Compre hoje e ganhe 1 pulseira de brinde!">
+    <title>Smartwatch W11x Premium | Garimpou Eletrônicos</title>
+    <meta name="description" content="Compre o Smartwatch W11x com Frete Grátis para todo o Brasil. Leve hoje com 1 Pulseira de Brinde!">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
     <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
     
-    <link rel="preload" as="image" href="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/w11xfotospreto.png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -53,7 +53,6 @@
         
         .shadow-soft { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08); }
         
-        /* Animação para a barra de estoque */
         @keyframes pulse-fast { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         .animate-pulse-fast { animation: pulse-fast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
     </style>
@@ -61,25 +60,26 @@
 <body class="antialiased flex flex-col min-h-screen selection:bg-brand-green selection:text-white">
 
     <header class="fixed w-full z-50 flex flex-col">
-        <!-- Barra de Urgência Topo -->
-        <div class="bg-red-600 text-white text-[10px] sm:text-xs font-bold text-center py-2 uppercase tracking-widest shadow-md flex justify-center items-center">
+        <!-- Barra de Urgência Topo - Foco em Frete Grátis -->
+        <div class="bg-red-600 text-white text-[10px] sm:text-xs font-bold text-center py-2.5 uppercase tracking-widest shadow-md flex justify-center items-center">
             <span class="flex items-center">
-                <i data-lucide="timer" class="w-4 h-4 mr-2 animate-pulse"></i> OFERTA ENCERRANDO: COMPRE HOJE E GANHE 1 PULSEIRA DE BRINDE
+                <i data-lucide="truck" class="w-4 h-4 mr-2 animate-bounce"></i> FRETE GRÁTIS PARA TODO O BRASIL + 1 PULSEIRA DE BRINDE
             </span>
         </div>
         
         <nav class="w-full bg-white/95 backdrop-blur-md border-b border-gray-200 transition-all duration-300 shadow-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16 sm:h-20">
-                    <div class="flex-shrink-0 flex items-center cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <div class="flex-shrink-0 flex items-center cursor-pointer group" onclick="showPage('w11x')">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/Logo%20Garimpou.png" onerror="this.src='https://ui-avatars.com/api/?name=G&background=10b981&color=fff'" alt="Garimpou Logo" class="h-8 w-8 sm:h-10 sm:w-10 rounded-full mr-3 object-cover shadow-sm group-hover:scale-105 transition">
                         <span class="font-black text-xl sm:text-2xl tracking-widest text-gray-900 uppercase">Garimpou</span>
                     </div>
                     <div class="hidden md:flex space-x-8 items-center">
-                        <a href="#catalogo" class="text-gray-600 hover:text-brand-green transition text-sm font-bold uppercase tracking-wider">Produtos</a>
+                        <a href="#" onclick="showPage('w11x'); return false;" id="nav-desktop-w11x" class="text-brand-green transition text-sm font-black uppercase tracking-wider">Oferta W11x</a>
+                        <a href="#" onclick="showPage('catalogo'); return false;" id="nav-desktop-cat" class="text-gray-600 hover:text-brand-green transition text-sm font-bold uppercase tracking-wider">Catálogo</a>
                         <a href="#depoimentos" class="text-gray-600 hover:text-brand-green transition text-sm font-bold uppercase tracking-wider">Avaliações</a>
-                        <button onclick="openWhatsApp('Olá! Vim pelo site e gostaria de ajuda para comprar.')" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-6 rounded-full transition-all flex items-center uppercase tracking-wide text-xs shadow-md">
-                            <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Ajuda no WhatsApp
+                        <button onclick="openWhatsApp('Olá! Vim pelo anúncio e gostaria de ajuda para finalizar a compra do W11x.')" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-5 rounded-full transition-all flex items-center uppercase tracking-wide text-xs shadow-md">
+                            <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Dúvidas?
                         </button>
                     </div>
                     <div class="md:hidden flex items-center">
@@ -89,11 +89,9 @@
             </div>
             <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 absolute w-full shadow-2xl">
                 <div class="px-4 py-4 space-y-2 text-center flex flex-col">
-                    <a href="#catalogo" class="mobile-link block py-3 text-sm font-bold text-gray-700 hover:text-brand-green uppercase tracking-widest">Catálogo</a>
+                    <a href="#" onclick="showPage('w11x'); return false;" id="nav-mobile-w11x" class="mobile-link block py-3 text-sm font-black text-brand-green uppercase tracking-widest">Oferta W11x</a>
+                    <a href="#" onclick="showPage('catalogo'); return false;" id="nav-mobile-cat" class="mobile-link block py-3 text-sm font-bold text-gray-700 hover:text-brand-green uppercase tracking-widest">Catálogo</a>
                     <a href="#depoimentos" class="mobile-link block py-3 text-sm font-bold text-gray-700 hover:text-brand-green uppercase tracking-widest">Avaliações</a>
-                    <button onclick="openWhatsApp('Olá! Preciso de ajuda para finalizar a compra.')" class="mt-4 bg-green-600 text-white font-black py-4 rounded-xl flex justify-center items-center uppercase tracking-wider shadow-md">
-                        <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i> Falar no WhatsApp
-                    </button>
                 </div>
             </div>
         </nav>
@@ -101,280 +99,210 @@
 
     <main class="flex-grow pt-24 sm:pt-28">
 
-        <!-- ==================== HERO DIRETO E FOCO EM CONVERSÃO ==================== -->
-        <section class="relative bg-white pt-8 pb-12 sm:pt-12 sm:pb-16 premium-grid border-b border-gray-100">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <div class="inline-flex items-center mx-auto py-1.5 px-4 rounded-full border border-green-200 bg-green-50 text-green-700 font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-6 shadow-sm">
-                    <i data-lucide="truck" class="w-3.5 h-3.5 mr-1.5"></i> Frete Expresso para todo o Brasil
-                </div>
+        <!-- ==================== HERO DE ALTA CONVERSÃO: OFERTA W11X ==================== -->
+        <section id="oferta-principal" class="relative bg-white pt-6 pb-12 sm:pt-8 sm:pb-16 premium-grid border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
-                    Smartwatches Premium. <br>
-                    <span class="text-brand-green">Tecnologia de Verdade.</span>
-                </h1>
-                
-                <p class="text-gray-600 text-sm sm:text-lg mx-auto mb-8 font-medium leading-relaxed max-w-2xl">
-                    Sensores precisos, telas de alta resolução e bateria de longa duração. Escolha o seu modelo abaixo e garanta <strong class="text-gray-900 font-bold bg-yellow-100 px-1">1 Pulseira Extra de Brinde</strong> nesta semana.
-                </p>
-                
-                <div class="flex justify-center items-center gap-2 sm:gap-6 text-[10px] sm:text-sm font-bold text-gray-600 uppercase tracking-widest">
-                    <span class="flex items-center"><i data-lucide="shield-check" class="w-4 h-4 text-brand-green mr-1.5"></i> 30 Dias Garantia</span>
-                    <span class="text-gray-300">|</span>
-                    <span class="flex items-center"><i data-lucide="credit-card" class="w-4 h-4 text-blue-600 mr-1.5"></i> Até 5x no Cartão</span>
+                <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                    
+                    <!-- LADO ESQUERDO: IMAGEM W11X -->
+                    <div class="w-full lg:w-1/2 flex flex-col">
+                        <!-- TAGS VISUAIS -->
+                        <div class="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
+                            <span class="bg-red-600 text-white text-[10px] sm:text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-widest flex items-center shadow-sm"><i data-lucide="flame" class="w-3.5 h-3.5 mr-1.5"></i> Mais Vendido</span>
+                            <span class="bg-green-600 text-white text-[10px] sm:text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-widest flex items-center shadow-sm"><i data-lucide="truck" class="w-3.5 h-3.5 mr-1.5"></i> Frete Grátis</span>
+                        </div>
+                        
+                        <!-- FOTO PRINCIPAL QUADRADA -->
+                        <div class="w-full aspect-square bg-gray-50 rounded-3xl overflow-hidden flex items-center justify-center border border-gray-200 shadow-soft mb-4 relative group">
+                            <img id="hero-w11x" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/w11xfotospreto.png" fetchpriority="high" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" alt="Smartwatch W11x">
+                        </div>
+
+                        <!-- Miniaturas (Galeria) -->
+                        <div class="mb-4">
+                            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-2 block flex items-center justify-center lg:justify-start"><i data-lucide="mouse-pointer-click" class="w-3 h-3 mr-1.5 text-brand-green"></i> Deslize e toque para ver detalhes:</span>
+                            <div id="gallery-w11x-hero" class="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide snap-x"></div>
+                        </div>
+                        
+                        <!-- Cores -->
+                        <div class="flex items-center justify-center lg:justify-start">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest font-bold mr-4">Cor da Caixa:</span>
+                            <div class="flex space-x-3">
+                                <button onclick="changeImage('hero-w11x', 'w11xfotospreto.png')" class="w-10 h-10 rounded-full bg-[#111] border-2 border-white shadow-md focus:ring-2 focus:ring-brand-green transition"></button>
+                                <button onclick="changeImage('hero-w11x', 'w11xfotosprata.png')" class="w-10 h-10 rounded-full bg-[#d1d5db] border-2 border-white shadow-md focus:ring-2 focus:ring-brand-green transition"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LADO DIREITO: CARTA DE VENDAS W11X -->
+                    <div class="w-full lg:w-1/2 flex flex-col text-center lg:text-left">
+                        
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-3 tracking-tight leading-tight">
+                            Smartwatch W11x <span class="text-brand-green">Premium</span>
+                        </h1>
+                        
+                        <p class="text-gray-600 text-sm sm:text-base mb-6 font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
+                            O relógio mais completo da categoria. Possui <strong class="text-gray-900">1GB de Memória Interna</strong> para baixar músicas e fotos. Tela infinita IPS de 2.07", faz ligações e digita mensagens no próprio relógio.
+                        </p>
+
+                        <!-- Bloco de Preço Agressivo -->
+                        <div class="bg-brand-bg border border-gray-200 rounded-2xl p-5 sm:p-6 mb-6 shadow-sm">
+                            <div class="flex items-center justify-center lg:justify-start text-amber-600 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-3 bg-amber-50 inline-flex px-3 py-1.5 rounded-lg border border-amber-200">
+                                <i data-lucide="gift" class="w-4 h-4 mr-1.5 animate-pulse-fast"></i> Oferta: + 1 Pulseira Extra de Brinde
+                            </div>
+                            
+                            <div class="text-sm text-gray-400 line-through mb-1">De R$ 299,00</div>
+                            <div class="flex flex-col sm:flex-row sm:items-end justify-center lg:justify-start gap-2 sm:gap-3 mb-2">
+                                <div class="text-5xl sm:text-6xl font-black text-brand-green flex items-baseline tracking-tight">
+                                    <span class="text-2xl mr-1">R$</span>209,00
+                                </div>
+                                <span class="text-xs text-gray-500 font-bold uppercase tracking-widest sm:mb-2">em até 3x sem juros</span>
+                            </div>
+                            
+                            <!-- Desconto PIX -->
+                            <div class="flex justify-center lg:justify-start mt-1">
+                                <div class="inline-flex items-center px-3 py-1.5 bg-[#e6f7f3] border border-brand-green/30 text-brand-darkGreen text-xs sm:text-sm font-black rounded-lg">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logotipo_do_Pix.svg/512px-Logotipo_do_Pix.svg.png" class="h-3.5 mr-2 opacity-80 object-contain" alt="Pix">
+                                    10% OFF: R$ 188,10 no Pix
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botão Comprar -->
+                        <button onclick="buyProduct('Smartwatch W11x')" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-4 sm:py-5 rounded-2xl transition-all uppercase tracking-widest text-sm sm:text-base mb-4 shadow-xl shadow-green-600/30 flex justify-center items-center transform hover:-translate-y-1">
+                            <i data-lucide="shopping-cart" class="w-5 h-5 sm:w-6 sm:h-6 mr-2"></i> Comprar W11x Agora
+                        </button>
+                        
+                        <!-- Trust Badges -->
+                        <div class="flex justify-center items-center gap-3 text-gray-400 mb-8">
+                            <i data-lucide="lock" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-bold uppercase tracking-widest">Pagamento 100% Seguro:</span>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logotipo_do_Pix.svg/512px-Logotipo_do_Pix.svg.png" class="h-4 opacity-70 grayscale object-contain" alt="Pix">
+                            <i data-lucide="credit-card" class="w-5 h-5 opacity-70"></i>
+                        </div>
+
+                        <!-- Mini Benefícios -->
+                        <div class="grid grid-cols-2 gap-3 mt-2">
+                            <div class="bg-white border border-gray-100 p-3 rounded-xl flex items-center shadow-sm">
+                                <i data-lucide="hard-drive" class="w-6 h-6 text-brand-green mr-3"></i>
+                                <span class="text-xs sm:text-sm font-bold text-gray-700 leading-tight">1GB de<br>Memória</span>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-3 rounded-xl flex items-center shadow-sm">
+                                <i data-lucide="message-square" class="w-6 h-6 text-brand-green mr-3"></i>
+                                <span class="text-xs sm:text-sm font-bold text-gray-700 leading-tight">Digita no<br>WhatsApp</span>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-3 rounded-xl flex items-center shadow-sm">
+                                <i data-lucide="cpu" class="w-6 h-6 text-brand-green mr-3"></i>
+                                <span class="text-xs sm:text-sm font-bold text-gray-700 leading-tight">Processador<br>JL7012F7</span>
+                            </div>
+                            <div class="bg-white border border-gray-100 p-3 rounded-xl flex items-center shadow-sm">
+                                <i data-lucide="battery-charging" class="w-6 h-6 text-brand-green mr-3"></i>
+                                <span class="text-xs sm:text-sm font-bold text-gray-700 leading-tight">Bateria de<br>Longa Duração</span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== CATÁLOGO (ESTRUTURA E-COMMERCE ALTA CONVERSÃO) ==================== -->
-        <section id="catalogo" class="py-12 sm:py-16 bg-gray-50">
+        <!-- ==================== CATÁLOGO COMPLETO ==================== -->
+        <section id="outros-modelos" class="py-16 bg-gray-50 border-t border-gray-200 hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl font-black text-gray-900 uppercase tracking-widest mb-2">Nossa Linha Premium</h2>
+                    <p class="text-gray-500 text-sm">Conheça o catálogo completo de smartwatches de alta performance.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- 1. W11x -->
-                    <div class="bg-white border border-gray-200 rounded-3xl p-5 sm:p-8 flex flex-col relative shadow-soft">
-                        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-30 bg-red-600 text-white font-black px-3 py-1 rounded-full text-[10px] shadow-sm uppercase tracking-widest flex items-center">
-                            <i data-lucide="flame" class="w-3 h-3 mr-1"></i> Mais Vendido
-                        </div>
-                        
-                        <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-4 overflow-hidden flex items-center justify-center border border-gray-100">
-                            <img id="cat-w11x" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/w11xfotospreto.png" fetchpriority="high" decoding="async" class="w-full h-full object-cover">
-                        </div>
-
-                        <!-- Miniaturas E-commerce -->
-                        <div class="mb-5">
-                            <div id="gallery-w11x-cat" class="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide snap-x"></div>
-                        </div>
-
-                        <!-- Título e Preço -->
-                        <div class="mb-4 flex-grow">
-                            <h3 class="text-2xl font-black text-gray-900 mb-1">Smartwatch W11x <span class="text-sm text-gray-500 font-normal">46mm</span></h3>
-                            
-                            <div class="text-sm text-gray-400 line-through mb-0.5 mt-2">R$ 299,00</div>
-                            <div class="text-3xl font-black text-brand-green flex items-baseline">
-                                R$ 209,00 <span class="text-xs text-gray-500 font-medium ml-2 uppercase">Ou 3x no cartão</span>
-                            </div>
-                        </div>
-
-                        <!-- Escassez e Cor -->
-                        <div class="bg-red-50 border border-red-100 rounded-lg p-3 mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                            <div>
-                                <span class="text-[10px] text-red-600 font-bold uppercase tracking-widest flex items-center mb-1">
-                                    <span class="w-2 h-2 rounded-full bg-red-600 mr-1.5 animate-pulse-fast"></span> Estoque Limitado
-                                </span>
-                                <p class="text-xs text-gray-700 font-medium"><strong>Últimas unidades</strong> com brinde!</p>
-                            </div>
-                            <div class="flex space-x-2">
-                                <button onclick="changeImage('cat-w11x', 'w11xfotospreto.png')" class="w-8 h-8 rounded-full bg-[#111] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                                <button onclick="changeImage('cat-w11x', 'w11xfotosprata.png')" class="w-8 h-8 rounded-full bg-[#d1d5db] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                            </div>
-                        </div>
-
-                        <button onclick="buyProduct('Smartwatch W11x')" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-xl transition-all uppercase tracking-widest text-sm mb-3 shadow-lg shadow-green-600/30 flex justify-center items-center transform hover:-translate-y-0.5">
-                            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i> Comprar Agora
-                        </button>
-                        
-                        <!-- Trust Badges -->
-                        <div class="flex justify-center items-center gap-3 text-gray-400 mb-6">
-                            <i data-lucide="lock" class="w-4 h-4"></i>
-                            <span class="text-[10px] font-bold uppercase tracking-widest">Pagamento Seguro via Ton:</span>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logotipo_do_Pix.svg" class="h-4 opacity-70 grayscale" alt="Pix">
-                            <i data-lucide="credit-card" class="w-5 h-5 opacity-70"></i>
-                        </div>
-
-                        <!-- Sanfona Limpa -->
-                        <div class="space-y-2">
-                            <details class="bg-gray-50 rounded-xl border border-gray-200">
-                                <summary class="flex justify-between items-center font-bold cursor-pointer p-4 text-gray-700 hover:text-brand-green text-xs uppercase tracking-widest">
-                                    <span class="flex items-center"><i data-lucide="hard-drive" class="w-4 h-4 mr-2 text-brand-green"></i> 1GB de Memória Interna</span>
-                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                                </summary>
-                                <div class="text-gray-600 text-xs sm:text-sm p-4 pt-0 leading-relaxed font-normal">
-                                    Baixe músicas diretamente para o relógio e ouça no fone bluetooth sem o celular. Digita e responde WhatsApp. Tela IPS 2.07" de altíssima qualidade.
-                                </div>
-                            </details>
-                        </div>
-                    </div>
-
-                    <!-- 2. Ultra 5 -->
-                    <div class="bg-white border border-gray-200 rounded-3xl p-5 sm:p-8 flex flex-col relative shadow-soft">
-                        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-30 bg-gray-900 text-white font-black px-3 py-1 rounded-full text-[10px] shadow-sm uppercase tracking-widest flex items-center">
-                            Design Premium
-                        </div>
-                        
+                    <!-- 1. Ultra 5 -->
+                    <div class="bg-white border border-gray-200 rounded-3xl p-5 flex flex-col relative shadow-soft">
                         <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-4 overflow-hidden flex items-center justify-center border border-gray-100">
                             <img id="cat-u5" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/u5fotospreto.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover">
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div id="gallery-u5-cat" class="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide snap-x"></div>
                         </div>
 
                         <div class="mb-4 flex-grow">
-                            <h3 class="text-2xl font-black text-gray-900 mb-1">Smartwatch Ultra 5 <span class="text-sm text-gray-500 font-normal">49mm</span></h3>
-                            
-                            <div class="text-sm text-gray-400 line-through mb-0.5 mt-2">R$ 269,00</div>
-                            <div class="text-3xl font-black text-brand-green flex items-baseline">
-                                R$ 189,00 <span class="text-xs text-gray-500 font-medium ml-2 uppercase">Ou 3x no cartão</span>
+                            <h3 class="text-xl font-black text-gray-900 mb-1">Smartwatch Ultra 5</h3>
+                            <p class="text-xs text-gray-500 mb-3">49mm • ChatGPT Integrado</p>
+                            <div class="text-2xl font-black text-brand-green flex items-baseline">
+                                R$ 189,00
                             </div>
                         </div>
 
-                        <div class="bg-amber-50 border border-amber-100 rounded-lg p-3 mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                            <div>
-                                <span class="text-[10px] text-amber-600 font-bold uppercase tracking-widest flex items-center mb-1">
-                                    <i data-lucide="gift" class="w-3 h-3 mr-1"></i> Oferta Especial
-                                </span>
-                                <p class="text-xs text-gray-700 font-medium"><strong>Últimas unidades</strong> com brinde!</p>
-                            </div>
-                            <div class="flex space-x-2">
-                                <button onclick="changeImage('cat-u5', 'u5fotospreto.jpg')" class="w-8 h-8 rounded-full bg-[#111] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                                <button onclick="changeImage('cat-u5', 'u5fotosdourado.jpg')" class="w-8 h-8 rounded-full bg-[#fbbf24] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                            </div>
+                        <div class="flex space-x-2 mb-4 justify-center">
+                            <button onclick="changeImage('cat-u5', 'u5fotospreto.jpg')" class="w-6 h-6 rounded-full bg-[#111] border-2 border-white shadow-sm"></button>
+                            <button onclick="changeImage('cat-u5', 'u5fotosdourado.jpg')" class="w-6 h-6 rounded-full bg-[#fbbf24] border-2 border-white shadow-sm"></button>
                         </div>
 
-                        <button onclick="buyProduct('Smartwatch Ultra 5')" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-xl transition-all uppercase tracking-widest text-sm mb-3 shadow-lg shadow-green-600/30 flex justify-center items-center transform hover:-translate-y-0.5">
-                            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i> Comprar Agora
+                        <button onclick="buyProduct('Smartwatch Ultra 5')" class="w-full bg-gray-900 hover:bg-black text-white font-bold py-3 rounded-xl transition-all uppercase tracking-widest text-xs shadow-md">
+                            Ver Detalhes e Comprar
                         </button>
-                        
-                        <div class="flex justify-center items-center gap-3 text-gray-400 mb-6">
-                            <i data-lucide="lock" class="w-4 h-4"></i>
-                            <span class="text-[10px] font-bold uppercase tracking-widest">Pagamento Seguro via Ton:</span>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logotipo_do_Pix.svg" class="h-4 opacity-70 grayscale" alt="Pix">
-                            <i data-lucide="credit-card" class="w-5 h-5 opacity-70"></i>
-                        </div>
-
-                        <div class="space-y-2">
-                            <details class="bg-gray-50 rounded-xl border border-gray-200">
-                                <summary class="flex justify-between items-center font-bold cursor-pointer p-4 text-gray-700 hover:text-brand-green text-xs uppercase tracking-widest">
-                                    <span class="flex items-center"><i data-lucide="bot" class="w-4 h-4 mr-2 text-brand-green"></i> Chat GPT & Chamadas</span>
-                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                                </summary>
-                                <div class="text-gray-600 text-xs sm:text-sm p-4 pt-0 leading-relaxed font-normal">
-                                    Caixa robusta em liga metálica. Faça chamadas, fale com o ChatGPT em português, use o NFC para fechaduras e receba todas as notificações na tela de 2.0" IPS.
-                                </div>
-                            </details>
-                        </div>
                     </div>
 
-                    <!-- 3. SU01 -->
-                    <div class="bg-white border border-gray-200 rounded-3xl p-5 sm:p-8 flex flex-col relative shadow-soft">
-                        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-30 bg-blue-600 text-white font-black px-3 py-1 rounded-full text-[10px] shadow-sm uppercase tracking-widest flex items-center">
-                            GPS + Mergulho
+                    <!-- 2. SU01 -->
+                    <div class="bg-white border border-gray-200 rounded-3xl p-5 flex flex-col relative shadow-soft">
+                        <div class="absolute top-4 left-4 z-30 bg-blue-600 text-white font-black px-2.5 py-1 rounded-md text-[10px] shadow-sm uppercase tracking-widest">
+                            GPS + 3ATM
                         </div>
-                        
                         <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-4 overflow-hidden flex items-center justify-center border border-gray-100">
                             <img id="cat-su01" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/su01preto.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover">
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div id="gallery-su01-cat" class="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide snap-x"></div>
                         </div>
 
                         <div class="mb-4 flex-grow">
-                            <h3 class="text-2xl font-black text-gray-900 mb-1">Smartwatch SU01 <span class="text-sm text-gray-500 font-normal">AMOLED</span></h3>
-                            
-                            <div class="text-sm text-gray-400 line-through mb-0.5 mt-2">R$ 389,00</div>
-                            <div class="text-3xl font-black text-brand-green flex items-baseline">
-                                R$ 299,00 <span class="text-xs text-gray-500 font-medium ml-2 uppercase">Ou 5x no cartão</span>
+                            <h3 class="text-xl font-black text-gray-900 mb-1">Smartwatch SU01</h3>
+                            <p class="text-xs text-gray-500 mb-3">Tela AMOLED • Mergulho</p>
+                            <div class="text-2xl font-black text-brand-green flex items-baseline">
+                                R$ 299,00
                             </div>
                         </div>
 
-                        <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                            <div>
-                                <span class="text-[10px] text-blue-600 font-bold uppercase tracking-widest flex items-center mb-1">
-                                    <i data-lucide="map" class="w-3 h-3 mr-1"></i> Linha Pro
-                                </span>
-                                <p class="text-xs text-gray-700 font-medium"><strong>Últimas unidades</strong> com brinde!</p>
-                            </div>
-                            <div class="flex space-x-2">
-                                <button onclick="changeImage('cat-su01', 'su01preto.jpg')" class="w-8 h-8 rounded-full bg-[#111] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                                <button onclick="changeImage('cat-su01', 'su01branco.jpg')" class="w-8 h-8 rounded-full bg-[#f3f4f6] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                                <button onclick="changeImage('cat-su01', 'su01laranja.jpg')" class="w-8 h-8 rounded-full bg-[#f97316] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                            </div>
+                        <div class="flex space-x-2 mb-4 justify-center">
+                            <button onclick="changeImage('cat-su01', 'su01preto.jpg')" class="w-6 h-6 rounded-full bg-[#111] border-2 border-white shadow-sm"></button>
+                            <button onclick="changeImage('cat-su01', 'su01branco.jpg')" class="w-6 h-6 rounded-full bg-[#f3f4f6] border-2 border-white shadow-sm"></button>
+                            <button onclick="changeImage('cat-su01', 'su01laranja.jpg')" class="w-6 h-6 rounded-full bg-[#f97316] border-2 border-white shadow-sm"></button>
                         </div>
 
-                        <button onclick="buyProduct('Smartwatch SU01')" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-xl transition-all uppercase tracking-widest text-sm mb-3 shadow-lg shadow-green-600/30 flex justify-center items-center transform hover:-translate-y-0.5">
-                            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i> Comprar Agora
+                        <button onclick="buyProduct('Smartwatch SU01')" class="w-full bg-gray-900 hover:bg-black text-white font-bold py-3 rounded-xl transition-all uppercase tracking-widest text-xs shadow-md">
+                            Ver Detalhes e Comprar
                         </button>
-                        
-                        <div class="flex justify-center items-center gap-3 text-gray-400 mb-6">
-                            <i data-lucide="lock" class="w-4 h-4"></i>
-                            <span class="text-[10px] font-bold uppercase tracking-widest">Pagamento Seguro via Ton:</span>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logotipo_do_Pix.svg" class="h-4 opacity-70 grayscale" alt="Pix">
-                            <i data-lucide="credit-card" class="w-5 h-5 opacity-70"></i>
-                        </div>
-
-                        <div class="space-y-2">
-                            <details class="bg-gray-50 rounded-xl border border-gray-200">
-                                <summary class="flex justify-between items-center font-bold cursor-pointer p-4 text-gray-700 hover:text-brand-green text-xs uppercase tracking-widest">
-                                    <span class="flex items-center"><i data-lucide="droplets" class="w-4 h-4 mr-2 text-blue-500"></i> GPS Nativo & À prova d'água</span>
-                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                                </summary>
-                                <div class="text-gray-600 text-xs sm:text-sm p-4 pt-0 leading-relaxed font-normal">
-                                    Único com GPS real (corra sem levar o celular) e 100% à prova d'água (3ATM) para natação. Tela AMOLED espetacular e bateria gigante de 400mAh.
-                                </div>
-                            </details>
-                        </div>
                     </div>
 
-                    <!-- 4. S11mini -->
-                    <div class="bg-white border border-gray-200 rounded-3xl p-5 sm:p-8 flex flex-col relative shadow-soft">
-                        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-30 bg-purple-600 text-white font-black px-3 py-1 rounded-full text-[10px] shadow-sm uppercase tracking-widest flex items-center">
-                            Pulsos Finos
-                        </div>
-                        
+                    <!-- 3. S11mini -->
+                    <div class="bg-white border border-gray-200 rounded-3xl p-5 flex flex-col relative shadow-soft">
                         <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-4 overflow-hidden flex items-center justify-center border border-gray-100">
                             <img id="cat-s11mini" src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/S11MINIFOTOSPRETO.jpg" loading="lazy" decoding="async" class="w-full h-full object-cover">
                         </div>
 
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <div id="gallery-s11-cat" class="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide snap-x"></div>
                         </div>
 
                         <div class="mb-4 flex-grow">
-                            <h3 class="text-2xl font-black text-gray-900 mb-1">Smartwatch S11mini <span class="text-sm text-gray-500 font-normal">42mm</span></h3>
-                            
-                            <div class="text-sm text-gray-400 line-through mb-0.5 mt-2">R$ 279,00</div>
-                            <div class="text-3xl font-black text-brand-green flex items-baseline">
-                                R$ 199,00 <span class="text-xs text-gray-500 font-medium ml-2 uppercase">Ou 3x no cartão</span>
+                            <h3 class="text-xl font-black text-gray-900 mb-1">Smartwatch S11mini</h3>
+                            <p class="text-xs text-gray-500 mb-3">42mm • Ideal p/ Pulsos Finos</p>
+                            <div class="text-2xl font-black text-brand-green flex items-baseline">
+                                R$ 199,00
                             </div>
                         </div>
 
-                        <div class="bg-red-50 border border-red-100 rounded-lg p-3 mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                            <div>
-                                <span class="text-[10px] text-red-600 font-bold uppercase tracking-widest flex items-center mb-1">
-                                    <span class="w-2 h-2 rounded-full bg-red-600 mr-1.5 animate-pulse-fast"></span> Estoque Limitado
-                                </span>
-                                <p class="text-xs text-gray-700 font-medium"><strong>Últimas unidades</strong> com brinde!</p>
-                            </div>
-                            <div class="flex space-x-2">
-                                <button onclick="changeImage('cat-s11mini', 'S11MINIFOTOSPRETO.jpg')" class="w-8 h-8 rounded-full bg-[#111] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                                <button onclick="changeImage('cat-s11mini', 'S11MINIFOTOSPRATA.jpg')" class="w-8 h-8 rounded-full bg-[#d1d5db] border-2 border-white shadow-sm focus:ring-2 focus:ring-brand-green transition"></button>
-                            </div>
+                        <div class="flex space-x-2 mb-4 justify-center">
+                            <button onclick="changeImage('cat-s11mini', 'S11MINIFOTOSPRETO.jpg')" class="w-6 h-6 rounded-full bg-[#111] border-2 border-white shadow-sm"></button>
+                            <button onclick="changeImage('cat-s11mini', 'S11MINIFOTOSPRATA.jpg')" class="w-6 h-6 rounded-full bg-[#d1d5db] border-2 border-white shadow-sm"></button>
                         </div>
 
-                        <button onclick="buyProduct('Smartwatch S11mini')" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-xl transition-all uppercase tracking-widest text-sm mb-3 shadow-lg shadow-green-600/30 flex justify-center items-center transform hover:-translate-y-0.5">
-                            <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i> Comprar Agora
+                        <button onclick="buyProduct('Smartwatch S11mini')" class="w-full bg-gray-900 hover:bg-black text-white font-bold py-3 rounded-xl transition-all uppercase tracking-widest text-xs shadow-md">
+                            Ver Detalhes e Comprar
                         </button>
-                        
-                        <div class="flex justify-center items-center gap-3 text-gray-400 mb-6">
-                            <i data-lucide="lock" class="w-4 h-4"></i>
-                            <span class="text-[10px] font-bold uppercase tracking-widest">Pagamento Seguro via Ton:</span>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logotipo_do_Pix.svg" class="h-4 opacity-70 grayscale" alt="Pix">
-                            <i data-lucide="credit-card" class="w-5 h-5 opacity-70"></i>
-                        </div>
-
-                        <div class="space-y-2">
-                            <details class="bg-gray-50 rounded-xl border border-gray-200">
-                                <summary class="flex justify-between items-center font-bold cursor-pointer p-4 text-gray-700 hover:text-brand-green text-xs uppercase tracking-widest">
-                                    <span class="flex items-center"><i data-lucide="minimize" class="w-4 h-4 mr-2 text-purple-600"></i> Discreto, Leve & Completo</span>
-                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                                </summary>
-                                <div class="text-gray-600 text-xs sm:text-sm p-4 pt-0 leading-relaxed font-normal">
-                                    O tamanho ideal de 42mm para pulsos femininos ou finos (apenas 45g). Apesar de pequeno, tem ChatGPT, faz ligações, monitoriza sono e pressão arterial.
-                                </div>
-                            </details>
-                        </div>
                     </div>
 
                 </div>
@@ -394,7 +322,6 @@
                 
                 <!-- Grid de 8 Fotos de Clientes -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                    
                     <!-- Foto 1 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(1).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -402,7 +329,6 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Cliente Satisfeito</p>
                         </div>
                     </div>
-
                     <!-- Foto 2 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(2).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -410,7 +336,6 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Entrega Realizada</p>
                         </div>
                     </div>
-
                     <!-- Foto 3 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(3).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -418,7 +343,6 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Pedido Entregue</p>
                         </div>
                     </div>
-
                     <!-- Foto 4 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(4).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -426,7 +350,6 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Mais um cliente</p>
                         </div>
                     </div>
-                    
                     <!-- Foto 5 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(5).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -434,7 +357,6 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Cliente Satisfeito</p>
                         </div>
                     </div>
-                    
                     <!-- Foto 6 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(6).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -442,7 +364,6 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Entrega Realizada</p>
                         </div>
                     </div>
-                    
                     <!-- Foto 7 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(7).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -450,7 +371,6 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Pedido Entregue</p>
                         </div>
                     </div>
-                    
                     <!-- Foto 8 -->
                     <div class="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100 border border-gray-200 shadow-sm">
                         <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/feedback%20(8).jpeg" alt="Cliente Garimpou" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -458,12 +378,11 @@
                             <p class="text-white text-[10px] sm:text-xs font-bold flex items-center tracking-wide"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-green mr-1.5"></i> Mais um cliente</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- ==================== GARANTIA & FOOTER ==================== -->
+        <!-- ==================== GARANTIA ==================== -->
         <section class="py-12 bg-gray-900 border-t border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
                 <div class="text-center md:text-left">
@@ -490,14 +409,14 @@
             </p>
             
             <div class="flex justify-center items-center gap-4 mt-6 opacity-60">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logotipo_do_Pix.svg" class="h-4 grayscale" alt="Pix">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-3 grayscale" alt="Visa">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-4 grayscale" alt="Mastercard">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logotipo_do_Pix.svg/512px-Logotipo_do_Pix.svg.png" class="h-4 grayscale object-contain" alt="Pix">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/512px-Visa_Inc._logo.svg.png" class="h-3 grayscale object-contain" alt="Visa">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/512px-Mastercard-logo.svg.png" class="h-4 grayscale object-contain" alt="Mastercard">
             </div>
         </div>
     </footer>
 
-    <!-- MODAL TON AVISO (MAIS DIRETO E SEM FALAR QUE VAI PRO ZAP OBRIGATORIAMENTE) -->
+    <!-- MODAL TON AVISO -->
     <div id="checkout-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="absolute inset-0 bg-gray-900/80 backdrop-blur-sm" onclick="closeModal()"></div>
         <div class="bg-white border border-gray-200 p-6 sm:p-8 rounded-3xl shadow-2xl max-w-md w-full mx-4 relative z-10 transform scale-95 transition-transform duration-300">
@@ -550,14 +469,51 @@
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
+        // --- SISTEMA DE NAVEGAÇÃO (PÁGINAS) ---
+        function showPage(page) {
+            const w11xSec = document.getElementById('oferta-principal');
+            const catSec = document.getElementById('outros-modelos');
+            const dNavW11x = document.getElementById('nav-desktop-w11x');
+            const dNavCat = document.getElementById('nav-desktop-cat');
+            const mNavW11x = document.getElementById('nav-mobile-w11x');
+            const mNavCat = document.getElementById('nav-mobile-cat');
+
+            if(page === 'w11x') {
+                w11xSec.classList.remove('hidden');
+                catSec.classList.add('hidden');
+                
+                dNavW11x.className = "text-brand-green transition text-sm font-black uppercase tracking-wider";
+                dNavCat.className = "text-gray-600 hover:text-brand-green transition text-sm font-bold uppercase tracking-wider";
+                mNavW11x.className = "mobile-link block py-3 text-sm font-black text-brand-green uppercase tracking-widest";
+                mNavCat.className = "mobile-link block py-3 text-sm font-bold text-gray-700 hover:text-brand-green uppercase tracking-widest";
+            } else if (page === 'catalogo') {
+                w11xSec.classList.add('hidden');
+                catSec.classList.remove('hidden');
+                
+                dNavCat.className = "text-brand-green transition text-sm font-black uppercase tracking-wider";
+                dNavW11x.className = "text-gray-600 hover:text-brand-green transition text-sm font-bold uppercase tracking-wider";
+                mNavCat.className = "mobile-link block py-3 text-sm font-black text-brand-green uppercase tracking-widest";
+                mNavW11x.className = "mobile-link block py-3 text-sm font-bold text-gray-700 hover:text-brand-green uppercase tracking-widest";
+            }
+            
+            // Fecha menu mobile
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // --- SISTEMA DE GALERIAS ---
         function criarBotoesGaleria(idContent, idImg, fotosArray) {
             const container = document.getElementById(idContent);
             if(!container) return;
             let html = '';
             fotosArray.forEach(img => {
+                // Tamanho maior para o Hero (W11x) e menor para os "Outros Modelos"
+                const sizeClasses = idContent === 'gallery-w11x-hero' 
+                    ? 'w-16 h-16 sm:w-20 sm:h-20' 
+                    : 'w-12 h-12 sm:w-14 sm:h-14';
+
                 html += `
-                <button onclick="changeImage('${idImg}', '${img}')" class="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl border border-gray-200 hover:border-brand-green focus:border-brand-green overflow-hidden transition-all duration-300 bg-white shadow-sm" aria-label="Ver detalhe da foto">
+                <button onclick="changeImage('${idImg}', '${img}')" class="flex-shrink-0 ${sizeClasses} rounded-xl border border-gray-200 hover:border-brand-green focus:border-brand-green overflow-hidden transition-all duration-300 bg-white shadow-sm" aria-label="Ver detalhe da foto">
                     <img src="https://raw.githubusercontent.com/Guilherme19082001/garimpou/main/${img}" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-80 hover:opacity-100" alt="Detalhe do relógio">
                 </button>`;
             });
@@ -567,7 +523,7 @@
         function renderW11xGallery() {
             const fotos = ['w11xfotospreto.png', 'w11xfotosprata.png', 'w11xfotos%20(1).jpg', 'w11xfotos%20(1).png'];
             [2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21].forEach(n => fotos.push(`w11xfotos%20(${n}).png`));
-            criarBotoesGaleria('gallery-w11x-cat', 'cat-w11x', fotos);
+            criarBotoesGaleria('gallery-w11x-hero', 'hero-w11x', fotos);
         }
 
         function renderS11Gallery() {
